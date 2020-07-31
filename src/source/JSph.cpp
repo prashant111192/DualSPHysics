@@ -269,6 +269,17 @@ void JSph::InitVars(){
   DemDtForce=0;  //(DEM)
   MaxNumbers.Clear();
 
+  //Initialisation of Temperature
+
+  HeatTransfer=false;
+  HeatCpFluid=0;
+  HeatCpBound=0;
+  HeatKFluid=0;
+  HeatTempBound=0;
+  HeatTempFluid=0;
+  MkConstTempWall=0;
+  DensityBound=0;
+
   SaveFtAce=false;
 }
 
@@ -1149,6 +1160,24 @@ void JSph::LoadCaseConfig(const JSphCfgRun *cfg){
     if(BoundCorr)   Run_Exceptioon("Symmetry is not allowed with BoundCor.");
     if(TVisco!=VISCO_Artificial)Run_Exceptioon("Symmetry is only allowed with Artificial viscosity.");
   } //<vs_syymmetry_end>
+  //Config OF Temp Variables
+
+  TiXmlNode* tempNode=xml.GetNode("case.execution.special.temperature", false);
+  if (tempNode) {
+      HeatTransfer=true;
+      MkConstTempWall = xml.ReadElementInt(tempNode->ToElement(), "boundary", "mkbound" );
+      TiXmlNode* tempBoundNode = xml.GetNode("case.execution.special.temperature.boundary", false);
+      HeatCpBound = xml.ReadElementFloat(tempBoundNode, "HeatCpBound", "value");
+      HeatKBound = xml.ReadElementFloat(tempBoundNode, "HeatKBound", "value");
+      HeatTempBound = xml.ReadElementFloat(tempBoundNode, "HeatTempBound", "value");
+      DensityBound = xml.ReadElementFloat(tempBoundNode, "DensityBound", "value");
+      TiXmlNode* tempFluidNode = xml.GetNode("case.execution.special.temperature.fluid", false);
+      HeatCpFluid = xml.ReadElementFloat(tempFluidNode, "HeatCpFluid", "value");
+      HeatKFluid = xml.ReadElementFloat(tempFluidNode, "HeatKFluid", "value");
+      HeatTempFluid = xml.ReadElementFloat(tempFluidNode, "HeatTempFluid", "value");
+  }
+
+
 
   NpMinimum=CaseNp-unsigned(PartsOutMax*CaseNfluid);
   Log->Print("**Basic case configuration is loaded");

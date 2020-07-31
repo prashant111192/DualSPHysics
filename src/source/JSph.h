@@ -490,6 +490,24 @@ protected:
   unsigned GetOutRhopCount()const{ return(OutRhopCount); }
   unsigned GetOutMoveCount()const{ return(OutMoveCount); }
 
+
+
+  //Temperature Configuration Variables
+
+  bool HeatTransfer; 	//Enable Heat transfer
+  float HeatCpFluid; 	//Specific Heat Capacity of fluid
+  float HeatCpBound; 	//Specific Heat Capacity of bound
+
+  float HeatKFluid;		//thermal Conductivity
+  float HeatKBound; 	//thermal Conductivity
+
+  float HeatTempBound;	//temp of bound in K
+  float HeatTempFluid; 	//temp of Fluid K
+
+  float DensityBound;
+  unsigned MkConstTempWall;	//mk of the constant Temperature of wall boundary
+
+
 public:
   JSph(bool cpu,bool mgpu,bool withmpi);
   ~JSph();
