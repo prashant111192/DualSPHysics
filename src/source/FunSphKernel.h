@@ -201,7 +201,7 @@ inline StKWendlandCte GetKernelWendland_Ctes(bool sim2d,double h){
   return(kc);
 }
 //============================================================================== 
-/// Returns wab of kernel.
+/// Returns wab of kernel.   ///line 703
 //==============================================================================
 inline float GetKernelWendland_Wab(const StKWendlandCte &kc,float h,float rr2){
   const float rad=sqrt(rr2);

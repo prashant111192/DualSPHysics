@@ -224,9 +224,9 @@ protected:
     void InteractionForcesFluid(unsigned n,unsigned pini,bool boundp2,float visco
     ,StDivDataCpu divdata,const unsigned *dcell
     ,const tsymatrix3f* tau,tsymatrix3f* gradvel
-    ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *idp
+    ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *idp
     ,const float *press
-    ,float &viscdt,float *ar,tfloat3 *ace,float *delta
+    ,float &viscdt,float *ar,tfloat3 *ace,float *atemp, float *delta
     ,TpShifting shiftmode,tfloat4 *shiftposfs)const;
 
   void InteractionForcesDEM(unsigned nfloat,StDivDataCpu divdata,const unsigned *dcell
