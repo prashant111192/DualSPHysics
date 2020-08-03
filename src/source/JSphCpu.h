@@ -134,7 +134,7 @@ protected:
   //-Variables for compute step: SYMPLECTIC. | Vars. para compute step: SYMPLECTIC.
   tdouble3 *PosPrec;    ///<Sympletic: in order to keep previous values. | Sympletic: para guardar valores en predictor.
   tfloat4 *VelrhopPrec;
-  tfloat4 *TempPrec; 		/// Temperature array to keep previous Values for Symplectic
+  double *TempPrec; 		/// Temperature array to keep previous Values for Symplectic
 
   //-Variables for floating bodies.
   unsigned *FtRidp;             ///<Identifier to access to the particles of the floating object [CaseNfloat].
@@ -199,8 +199,8 @@ protected:
   llong GetAllocMemoryCpu()const;
   void PrintAllocMemory(llong mcpu)const;
 
-  unsigned GetParticlesData(unsigned n,unsigned pini,bool onlynormal
-    ,unsigned *idp,tdouble3 *pos,tfloat3 *vel,float *rhop,typecode *code);
+  unsigned GetParticlesData(unsigned n, unsigned pini, bool onlynormal
+    , unsigned *idp, tdouble3 *pos, tfloat3 *vel, float *rhop, double *temp, typecode *code);
   void ConfigOmp(const JSphCfgRun *cfg);
 
   void ConfigRunMode(const JSphCfgRun *cfg,std::string preinfo="");

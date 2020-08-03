@@ -350,7 +350,7 @@ void JSphCpu::PrintAllocMemory(llong mcpu)const{
 /// - onlynormal: Solo se queda con las normales, elimina las particulas periodicas.
 //==============================================================================
 unsigned JSphCpu::GetParticlesData(unsigned n,unsigned pini,bool onlynormal
-  ,unsigned *idp,tdouble3 *pos,tfloat3 *vel,float *rhop,typecode *code)
+  ,unsigned *idp,tdouble3 *pos,tfloat3 *vel,float *rhop,double *temp, typecode *code)
 {
   unsigned num=n;
   //-Copy selected values.
@@ -368,6 +368,8 @@ unsigned JSphCpu::GetParticlesData(unsigned n,unsigned pini,bool onlynormal
     if(vel) for(unsigned p=0;p<n;p++){ tfloat4 vr=Velrhopc[p+pini]; vel[p]=TFloat3(vr.x,vr.y,vr.z); }
     if(rhop)for(unsigned p=0;p<n;p++)rhop[p]=Velrhopc[p+pini].w;
   }
+
+  if(temp)memcpy(temp, Tempc + pini, sizeof(double)*n); //temperature Copy Values From Tempc
   //-Eliminate non-normal particles (periodic & others). | Elimina particulas no normales (periodicas y otras).
   if(onlynormal){
     if(!idp || !pos || !vel || !rhop)Run_Exceptioon("Pointers without data.");
@@ -385,6 +387,7 @@ unsigned JSphCpu::GetParticlesData(unsigned n,unsigned pini,bool onlynormal
         pos[pdel]  =pos[p];
         vel[pdel]  =vel[p];
         rhop[pdel] =rhop[p];
+        temp[pdel] = temp[p];	//Temperature
         code2[pdel]=code2[p];
       }
       if(!normal)ndel++;

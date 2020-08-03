@@ -119,7 +119,7 @@ void JSphCpuSingle::ConfigDomain(){
   for(unsigned p =0; p<Np; p++) Tempc[p] =HeatTempFluid;
   for(unsigned c =0; c<MkInfo->Size(); c++)  {
       const JSphMkBlock* block =MkInfo->Mkblock(c);
-      if(block->Mk == (MkConstTempWall + MkInfo->GetMkBoundFirst()))  {
+      if(block->Mk ==(MkConstTempWall + MkInfo->GetMkBoundFirst()))  {
           for(unsigned p =block->Begin; p<block->Begin+block->Count; p++)
               Tempc[p] =HeatTempBound;
       }
@@ -457,13 +457,16 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
   CellDivSingle->SortArray(Dcellc);
   CellDivSingle->SortArray(Posc);
   CellDivSingle->SortArray(Velrhopc);
+  CellDivSingle->SortArray(Tempc); //Overloaded Function Sort Tempc Double Array
   if(TStep==STEP_Verlet){
     CellDivSingle->SortArray(VelrhopM1c);
+    CellDivSingle->SortArray(TempM1c);
   }
   else if(TStep==STEP_Symplectic && (PosPrec || VelrhopPrec)){//-In reality, this is only necessary in divide for corrector, not in predictor??? | En realidad solo es necesario en el divide del corrector, no en el predictor???
     if(!PosPrec || !VelrhopPrec)Run_Exceptioon("Symplectic data is invalid.") ;
     CellDivSingle->SortArray(PosPrec);
     CellDivSingle->SortArray(VelrhopPrec);
+    CellDivSingle->SortArray(TempPrec);
   }
   if(TVisco==VISCO_LaminarSPS)CellDivSingle->SortArray(SpsTauc);
   if(UseNormals){ //<vs_mddbc_ini>
