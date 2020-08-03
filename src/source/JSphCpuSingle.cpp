@@ -116,6 +116,14 @@ void JSphCpuSingle::ConfigDomain(){
   memcpy(Idpc,PartsLoaded->GetIdp(),sizeof(unsigned)*Np);
   memcpy(Velrhopc,PartsLoaded->GetVelRhop(),sizeof(tfloat4)*Np);
 
+  for(unsigned p =0; p<Np; p++) Tempc[p] =HeatTempFluid;
+  for(unsigned c =0; c<MkInfo->Size(); c++)  {
+      const JSphMkBlock* block =MkInfo->Mkblock(c);
+      if(block->Mk == (MkConstTempWall + MkInfo->GetMkBoundFirst()))  {
+          for(unsigned p =block->Begin; p<block->Begin+block->Count; p++)
+              Tempc[p] =HeatTempBound;
+      }
+  }
   //-Computes radius of floating bodies.
   if(CaseNfloat && PeriActive!=0 && !PartBegin)CalcFloatingRadius(Np,Posc,Idpc);
 

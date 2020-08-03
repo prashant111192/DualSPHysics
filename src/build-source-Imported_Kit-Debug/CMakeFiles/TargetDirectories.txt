@@ -1,0 +1,8 @@
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/install/strip.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/install/local.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/install.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/list_install_components.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/rebuild_cache.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/edit_cache.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir
+/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0CPU_linux64.dir

@@ -1,0 +1,922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DualSPHysics"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DualSPHysics5.0_linux64">
+				<Option output="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux/DualSPHysics5.0_linux64" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/../../bin/linux"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-10.1/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 DualSPHysics5.0_linux64"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DualSPHysics5.0_linux64/fast">
+				<Option output="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux/DualSPHysics5.0_linux64" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/../../bin/linux"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-10.1/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 DualSPHysics5.0_linux64/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DualSPHysics5.0CPU_linux64">
+				<Option output="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux/DualSPHysics5.0CPU_linux64" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/../../bin/linux"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-10.1/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 DualSPHysics5.0CPU_linux64"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DualSPHysics5.0CPU_linux64/fast">
+				<Option output="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux/DualSPHysics5.0CPU_linux64" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/../../bin/linux"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-10.1/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 DualSPHysics5.0CPU_linux64/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JCellDivGpuSingle_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JCellDivGpu_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JDsAccInput_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JDsGauge_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JDsPips_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JReduSum_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JRelaxZone_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JSphGpuSimple_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JSphGpu_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JSphShifting_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug/CMakeFiles/DualSPHysics5.0_linux64.dir/DualSPHysics5.0_linux64_generated_JWaveOrder2_ker.cu.o">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/FunSphKernelsCfg.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/FunSphKernelsCfg.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/Functions.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/Functions.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/FunctionsCuda.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/FunctionsCuda.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/FunctionsGeo3d.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/FunctionsGeo3d.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JAppInfo.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JAppInfo.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JArraysCpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JArraysCpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JArraysGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JArraysGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JBinaryData.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JBinaryData.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseCtes.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseCtes.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseEParms.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseEParms.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseParts.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseParts.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseProperties.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseProperties.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseUserVars.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseUserVars.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseVtkOut.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCaseVtkOut.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivCpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivCpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivCpuSingle.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivCpuSingle.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivGpuSingle.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivGpuSingle.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivGpuSingle_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCellDivGpu_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCfgRunBase.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JCfgRunBase.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JChronoObjects.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JChronoObjects.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDataArrays.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDataArrays.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDebugSphGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDebugSphGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsAccInput.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsAccInput.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsAccInput_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsDamping.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsDamping.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsFixedDt.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsFixedDt.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsFtForcePoints.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsFtForcePoints.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsGaugeItem.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsGaugeItem.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsGaugeSystem.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsGaugeSystem.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsGauge_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsInitialize.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsInitialize.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsMooredFloatings.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsMooredFloatings.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsMotion.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsMotion.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsOutputTime.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsOutputTime.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPartsInit.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPartsInit.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPartsOut.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPartsOut.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPips.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPips.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsPips_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsSaveDt.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsSaveDt.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsViscoInput.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsViscoInput.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsphConfig.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JDsphConfig.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JException.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JException.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JLinearValue.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JLinearValue.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JLog2.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JLog2.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMLPistonsGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMLPistonsGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMeanValues.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMeanValues.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotion.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotion.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionList.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionList.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionMov.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionMov.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionObj.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionObj.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionPos.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JMotionPos.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JNormalsMarrone.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JNormalsMarrone.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JObject.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JObject.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JObjectGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JObjectGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JOutputCsv.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JOutputCsv.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartDataBi4.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartDataBi4.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartDataHead.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartDataHead.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartFloatBi4.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartFloatBi4.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartNormalData.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartNormalData.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartOutBi4Save.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartOutBi4Save.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartsLoad4.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JPartsLoad4.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRadixSort.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRadixSort.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRangeFilter.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRangeFilter.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JReadDatafile.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JReadDatafile.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JReduSum_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRelaxZone_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRelaxZonesGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JRelaxZonesGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSaveCsv2.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSaveCsv2.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSimpleNeigs.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSimpleNeigs.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSph.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSph.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphBoundCorr.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphBoundCorr.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCfgRun.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCfgRun.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCpuSingle.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCpuSingle.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCpuSingle_InOut.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphCpu_InOut.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpuSimple_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpuSingle.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpuSingle.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpuSingle_InOut.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphGpu_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOut.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOut.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOutGridData.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOutGridData.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOutPoints.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOutPoints.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOutZone.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphInOutZone.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphMk.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphMk.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphShifting.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphShifting.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JSphShifting_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JTimeControl.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JTimeControl.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JWaveAwasZsurf.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JWaveAwasZsurf.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JWaveOrder2_ker.cu">
+			<Option target="DualSPHysics5.0_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JWaveSpectrumGpu.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JWaveSpectrumGpu.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JXml.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/JXml.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/main.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/randomc.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/randomc.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/tinystr.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/tinystr.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/tinyxml.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/tinyxml.h">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/tinyxmlerror.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/tinyxmlparser.cpp">
+			<Option target="DualSPHysics5.0_linux64"/>
+			<Option target="DualSPHysics5.0CPU_linux64"/>
+		</Unit>
+		<Unit filename="/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/source/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

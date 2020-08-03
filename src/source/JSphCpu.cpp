@@ -96,6 +96,15 @@ void JSphCpu::InitVars(){
   FtRidp=NULL;
   FtoForces=NULL;
   FtoForcesRes=NULL;
+
+  //Initialisation Of temp Variables
+
+  Tempc = NULL;
+  TempM1c = NULL;
+  TempPrec = NULL;
+  Atempc = NULL;
+
+
   FreeCpuMemoryParticles();
   FreeCpuMemoryFixed();
 }
@@ -165,12 +174,20 @@ void JSphCpu::AllocCpuMemoryParticles(unsigned np,float over){
   ArraysCpu->AddArrayCount(JArraysCpu::SIZE_12B,1); //-ace
   ArraysCpu->AddArrayCount(JArraysCpu::SIZE_16B,2); //-velrhop,poscell
   ArraysCpu->AddArrayCount(JArraysCpu::SIZE_24B,2); //-pos
+
+  //Temperautre AddArray for Tempc and Atempc Variable
+  ArraysCpu->AddArrayCount(JArraysCpu::SIZE_8B, 2); //Tempc
+  ArraysCpu->AddArrayCount(JArraysCpu::SIZE_4B, 1); //Atempc
+
+
   if(TStep==STEP_Verlet){
     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_16B,1); //-velrhopm1
+    ArraysCpu->AddArrayCount(JArraysCpu::SIZE_8B, 1); //Temperature TempM1
   }
   else if(TStep==STEP_Symplectic){
     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_24B,1); //-pospre
     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_16B,1); //-velrhoppre
+    ArraysCpu->AddArrayCount(JArraysCpu::SIZE_8B, 1); //Temperature  TempPrec
   }
   if(TVisco==VISCO_LaminarSPS){     
     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_24B,1); //-SpsTau,SpsGradvel
@@ -288,7 +305,11 @@ void JSphCpu::ReserveBasicArraysCpu(){
   Dcellc=ArraysCpu->ReserveUint();
   Posc=ArraysCpu->ReserveDouble3();
   Velrhopc=ArraysCpu->ReserveFloat4();
-  if(TStep==STEP_Verlet)VelrhopM1c=ArraysCpu->ReserveFloat4();
+  Tempc = ArraysCpu->ReserveDouble();
+  if(TStep==STEP_Verlet){
+      VelrhopM1c=ArraysCpu->ReserveFloat4();
+      TempM1c=ArraysCpu->ReserveDouble();
+  }
   if(TVisco==VISCO_LaminarSPS)SpsTauc=ArraysCpu->ReserveSymatrix3f();
   if(UseNormals){ //<vs_mddbc_ini>
     BoundNormalc=ArraysCpu->ReserveFloat3();
@@ -425,7 +446,10 @@ void JSphCpu::ConfigRunMode(const JSphCfgRun *cfg,std::string preinfo){
 void JSphCpu::InitRunCpu(){
   InitRun(Np,Idpc,Posc);
 
-  if(TStep==STEP_Verlet)memcpy(VelrhopM1c,Velrhopc,sizeof(tfloat4)*Np);
+  if(TStep==STEP_Verlet){
+      memcpy(VelrhopM1c,Velrhopc,sizeof(tfloat4)*Np);
+      memcpy(TempM1c, Tempc, sizeof(double)*Np);		//Temperature Copy TempM1c and Temc
+  }
   if(TVisco==VISCO_LaminarSPS)memset(SpsTauc,0,sizeof(tsymatrix3f)*Np);
   if(CaseNfloat)InitFloating();
   if(MotionVelc)memset(MotionVelc,0,sizeof(tfloat3)*Np); //<vs_mddbc>

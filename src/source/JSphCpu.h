@@ -122,16 +122,19 @@ protected:
   unsigned *Dcellc;  ///<Cells inside DomCells coded with DomCellCode. | Celda dentro de DomCells codificada con DomCellCode.
   tdouble3 *Posc;
   tfloat4 *Velrhopc;
+  double *Tempc; 	/// Temperature for Each Particle
 
   tfloat3 *BoundNormalc;  ///<Normal (x,y,z) pointing from boundary particles to ghost nodes.  //<vs_mddbc>
   tfloat3 *MotionVelc;    ///<Velocity of a moving boundary particle.                          //<vs_mddbc>
     
   //-Variables for compute step: VERLET. | Vars. para compute step: VERLET.
   tfloat4 *VelrhopM1c;  ///<Verlet: in order to keep previous values. | Verlet: para guardar valores anteriores.
+  double *TempM1c; 		/// Temperature array to keep previous Values for Verlet
 
   //-Variables for compute step: SYMPLECTIC. | Vars. para compute step: SYMPLECTIC.
   tdouble3 *PosPrec;    ///<Sympletic: in order to keep previous values. | Sympletic: para guardar valores en predictor.
   tfloat4 *VelrhopPrec;
+  tfloat4 *TempPrec; 		/// Temperature array to keep previous Values for Symplectic
 
   //-Variables for floating bodies.
   unsigned *FtRidp;             ///<Identifier to access to the particles of the floating object [CaseNfloat].
@@ -141,6 +144,7 @@ protected:
   //-Variables for computation of forces | Vars. para computo de fuerzas.
   tfloat3 *Acec;         ///<Sum of interaction forces | Acumula fuerzas de interaccion
   float *Arc; 
+  float *Atempc;		 /// Temperature Derivative
   float *Deltac;         ///<Adjusted sum with Delta-SPH with DELTA_DynamicExt | Acumula ajuste de Delta-SPH con DELTA_DynamicExt
 
   tfloat4 *ShiftPosfsc;    ///<Particle displacement and free surface detection for Shifting.
