@@ -669,11 +669,11 @@ CUDA_parse_cubin:INTERNAL=/usr/share/cmake-3.16/Modules/FindCUDA/parse_cubin.cma
 //Location of run_nvcc.cmake
 CUDA_run_nvcc:INTERNAL=/usr/share/cmake-3.16/Modules/FindCUDA/run_nvcc.cmake
 //Details about finding OpenMP
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[TRUE][TRUE][c ][v4.5()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[TRUE][TRUE][c ][v()]
 //Details about finding OpenMP_C
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v4.5()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v()]
 //Details about finding OpenMP_CXX
-FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v4.5()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Result of TRY_COMPILE

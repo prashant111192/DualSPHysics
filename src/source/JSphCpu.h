@@ -217,8 +217,8 @@ protected:
 
   template<TpKernel tker,TpFtMode ftmode> void InteractionForcesBound
     (unsigned n,unsigned pini,StDivDataCpu divdata,const unsigned *dcell
-    ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *id
-    ,float &viscdt,float *ar)const;
+    ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *id
+    ,float &viscdt,float *ar ,float *atemp)const;
 
   template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool shift> 
     void InteractionForcesFluid(unsigned n,unsigned pini,bool boundp2,float visco
@@ -257,8 +257,8 @@ protected:
 
   void ComputeSpsTau(unsigned n,unsigned pini,const tfloat4 *velrhop,const tsymatrix3f *gradvel,tsymatrix3f *tau)const;
 
-  void ComputeVerletVarsFluid(bool shift,const tfloat4 *velrhop1,const tfloat4 *velrhop2,double dt,double dt2,tdouble3 *pos,unsigned *cell,typecode *code,tfloat4 *velrhopnew)const;
-  void ComputeVelrhopBound(const tfloat4* velrhopold,double armul,tfloat4* velrhopnew)const;
+  void ComputeVerletVarsFluid(bool shift,const tfloat4 *velrhop1,const tfloat4 *velrhop2, const double *tempp2,double dt,double dt2,tdouble3 *pos,unsigned *cell,typecode *code,tfloat4 *velrhopnew, double *tempnew)const;
+  void ComputeVelrhopBound(const tfloat4* velrhopold, const double *tempold, double armul, tfloat4* velrhopnew, double *tempnew)const;
 
   void ComputeVerlet(double dt);
   void ComputeSymplecticPre(double dt);

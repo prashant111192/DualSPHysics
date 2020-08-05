@@ -220,8 +220,20 @@ inline float GetKernelWendland_Fac(const StKWendlandCte &kc,float h,float rr2){
   const float wqq1=1.f-0.5f*qq;
   return(kc.bwen*qq*wqq1*wqq1*wqq1/rad);
 }
-//============================================================================== 
-/// Returns wab and fac of kernel.
+
+//==============================================================================
+/// Returns fabc of kernel.
+//==============================================================================
+
+/*inline float GetKernelWendland_Fabc(const StKWendlandCte &kc,float h,float rr2){
+  const float rad=sqrt(rr2);
+  const float qq=rad/h;
+  const float wqq1=1.f-0.5f*qq;
+  return(kc.bwen*qq*wqq1*wqq1*wqq1/rad);
+}
+*/
+//==============================================================================
+/// Returns wab and fac/fabc of kernel.
 //==============================================================================
 inline float GetKernelWendland_WabFac(const StKWendlandCte &kc,float h,float rr2,float &fac){
   const float rad=sqrt(rr2);

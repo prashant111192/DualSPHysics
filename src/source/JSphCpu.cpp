@@ -574,6 +574,7 @@ void JSphCpu::PosInteraction_Forces(){
   ArraysCpu->Free(ShiftPosfsc);  ShiftPosfsc=NULL;
   ArraysCpu->Free(Pressc);       Pressc=NULL;
   ArraysCpu->Free(SpsGradvelc);  SpsGradvelc=NULL;
+  ArraysCpu->Free(Atempc);		 Atempc=NULL;	//Temperature: free Atempc and reser the pointer to NULL
 }
 
 //==============================================================================
@@ -582,8 +583,8 @@ void JSphCpu::PosInteraction_Forces(){
 //==============================================================================
 template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
   (unsigned n,unsigned pinit,StDivDataCpu divdata,const unsigned *dcell
-  ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *idp
-  ,float &viscdt,float *ar)const
+  ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *idp
+  ,float &viscdt,float *ar, float *atemp)const
 {
   //-Initialize viscth to calculate max viscdt with OpenMP. | Inicializa viscth para calcular visdt maximo con OpenMP.
   float viscth[OMP_MAXTHREADS*OMP_STRIDE];
@@ -595,11 +596,15 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
   #endif
   for(int p1=int(pinit);p1<pfin;p1++){
     float visc=0,arp1=0;
+    float atempp1 = 0; //Temperature: initialise temp derivative to 0 for particle p1.
 
     //-Load data of particle p1. | Carga datos de particula p1.
     const tdouble3 posp1=pos[p1];
     const bool rsymp1=(Symmetry && posp1.y<=KernelSize); //<vs_syymmetry>
     const tfloat4 velrhop1=velrhop[p1];
+
+    const double tempp1 = temp[p1]; 	//Temperature: Load p1 temperature.
+    const float rhopp1 = DensityBound; 	//temperature: Load density for boundary.
 
     //-Search for neighbours in adjacent cells.
     const StNgSearch ngs=nsearch::Init(dcell[p1],false,divdata);
@@ -635,6 +640,14 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
             if(rsym)velrhop2.y=-velrhop2.y; //<vs_syymmetry>
             const float dvx=velrhop1.x-velrhop2.x, dvy=velrhop1.y-velrhop2.y, dvz=velrhop1.z-velrhop2.z;
             if(compute)arp1+=massp2*(dvx*frx+dvy*fry+dvz*frz)*(velrhop1.w/velrhop2.w);
+
+            //Temperature: compute temperature derivative
+            //===========================================
+
+            const double dtemp = tempp1 - temp[p2]; //Temperature: (dtemp= tempp1-tempp2)
+            const float tempConst = (4 * massp2*HeatKFluid*HeatKBound)/(HeatCpBound*rhopp1*velrhop[p2].w*(HeatKFluid + HeatKBound));
+            atempp1 += float(tempConst*dtemp*fac);
+            //===========================================
 
             {//-Viscosity.
               const float dot=drx*dvx + dry*dvy + drz*dvz;
@@ -756,6 +769,16 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
           const float dvx=velp1.x-velrhop2.x, dvy=velp1.y-velrhop2.y, dvz=velp1.z-velrhop2.z;
           if(compute)arp1+=massp2*(dvx*frx+dvy*fry+dvz*frz)*(rhopp1/velrhop2.w);
 
+
+          //==========Temperature==========
+          //-Temperature: compute temerature derivative
+          float heatKp2 = (boundp2 ? HeatKBound : HeatKFluid); //Check if p2 is bound or fluid and assign the respective thermal conductivity K.
+          float rhopp2 = (boundp2 ? DensityBound : velrhop[p2].w); //Check if p2 is bound or fluid and assign the respective density.
+
+          const double dtemp = tempp1 - temp[p2]; //(dtemp = tempp1-tempp2
+          const float tempConst = (4 * massp2*HeatKFluid*heatKp2)/(HeatCpFluid*rhopp1*rhopp2*(HeatKFluid + heatKp2));
+          atempp1 += float(tempConst*dtemp*fac);
+
           const float cbar=(float)Cs0;
           //-Density Diffusion Term (Molteni and Colagrossi 2009).
           if(tdensity==DDT_DDT && deltap1!=FLT_MAX){
@@ -840,7 +863,9 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
         else if(deltap1!=FLT_MAX)arp1+=deltap1;
       }
       ar[p1]+=arp1;
+      atemp[p1] += atempp1; //Temperature: Add atemp for particle p1.
       ace[p1]=ace[p1]+acep1;
+
       const int th=omp_get_thread_num();
       if(visc>viscth[th*OMP_STRIDE])viscth[th*OMP_STRIDE]=visc;
       if(tvisco==VISCO_LaminarSPS){
@@ -1335,8 +1360,8 @@ void JSphCpu::UpdatePos(tdouble3 rpos,double movx,double movy,double movz
 /// Calcula nuevos valores de posicion, velocidad y densidad para el fluido (usando Verlet).
 //==============================================================================
 void JSphCpu::ComputeVerletVarsFluid(bool shift,
-  const tfloat4 *velrhop1,const tfloat4 *velrhop2,double dt,double dt2
-  ,tdouble3 *pos,unsigned *dcell,typecode *code,tfloat4 *velrhopnew)const
+  const tfloat4 *velrhop1,const tfloat4 *velrhop2,const double *tempp2, double dt,double dt2
+  ,tdouble3 *pos,unsigned *dcell,typecode *code,tfloat4 *velrhopnew, double *tempnew)const
 {
   const double dt205=0.5*dt*dt;
   const tdouble3 gravity=ToTDouble3(Gravity);
@@ -1347,6 +1372,7 @@ void JSphCpu::ComputeVerletVarsFluid(bool shift,
   for(int p=pini;p<pfin;p++){
     //-Calculate density. | Calcula densidad.
     const float rhopnew=float(double(velrhop2[p].w)+dt2*Arc[p]);
+    tempnew[p] = tempp2[p] + dt2*Atempc[p]; //Temperature: compute new temperature
     if(!WithFloating || CODE_IsFluid(code[p])){//-Fluid Particles.
       const tdouble3 acegr=ToTDouble3(Acec[p])+gravity; //-Adds gravity.
       //-Calculate displacement. | Calcula desplazamiento.
@@ -1391,7 +1417,7 @@ void JSphCpu::ComputeVerletVarsFluid(bool shift,
 /// Calcula nuevos valores de densidad y pone velocidad a cero para el contorno 
 /// (fixed+moving, no floating).
 //==============================================================================
-void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,double armul,tfloat4* velrhopnew)const{
+void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,const double* tempold, double armul,tfloat4* velrhopnew, double* tempnew)const{
   const int npb=int(Npb);
   #ifdef OMP_USE
     #pragma omp parallel for schedule (static) if(npb>OMP_LIMIT_COMPUTESTEP)
@@ -1399,6 +1425,7 @@ void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,double armul,tfloat4
   for(int p=0;p<npb;p++){
     const float rhopnew=float(double(velrhopold[p].w)+armul*Arc[p]);
     velrhopnew[p]=TFloat4(0,0,0,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorved by boundary ones. | Evita q las boundary absorvan a las fluidas.
+    tempnew[p] = tempold[p]; //Temperature: constant temperature on boundaries for this implimentation.
   }
 }
 
@@ -1412,16 +1439,17 @@ void JSphCpu::ComputeVerlet(double dt){
   VerletStep++;
   if(VerletStep<VerletSteps){
     const double twodt=dt+dt;
-    ComputeVerletVarsFluid(shift,Velrhopc,VelrhopM1c,dt,twodt,Posc,Dcellc,Codec,VelrhopM1c);
-    ComputeVelrhopBound(VelrhopM1c,twodt,VelrhopM1c);
+    ComputeVerletVarsFluid(shift,Velrhopc,VelrhopM1c,Tempc, dt,twodt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
+    ComputeVelrhopBound(VelrhopM1c,Tempc, twodt,VelrhopM1c, TempM1c);
   }
   else{
-    ComputeVerletVarsFluid(shift,Velrhopc,Velrhopc,dt,dt,Posc,Dcellc,Codec,VelrhopM1c);
-    ComputeVelrhopBound(Velrhopc,dt,VelrhopM1c);
+    ComputeVerletVarsFluid(shift,Velrhopc,Velrhopc,Tempc, dt,dt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
+    ComputeVelrhopBound(Velrhopc,Tempc, dt,VelrhopM1c, TempM1c);
     VerletStep=0;
   }
   //-New values are calculated en VelrhopM1c. | Los nuevos valores se calculan en VelrhopM1c.
   swap(Velrhopc,VelrhopM1c);     //-Swap Velrhopc & VelrhopM1c. | Intercambia Velrhopc y VelrhopM1c.
+  swap(Tempc, TempM1c);
   TmcStop(Timers,TMC_SuComputeStep);
 }
 
