@@ -22,5 +22,5 @@ bin/windows/*.exp
 
 
 # Build Directories
-# build*/
+build*/
 
