@@ -22,6 +22,7 @@ bin/windows/*.exp
 
 
 # Build Directories
-build*/
+src/build*/
+src_mphase/DSPH_v5.0_NNewtonian/build*/
 bin/
 
