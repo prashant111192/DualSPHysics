@@ -470,8 +470,8 @@ protected:
   tfloat3* GetPointerDataFloat3(unsigned n,const tdouble3* v)const;
   void AddBasicArrays(JDataArrays &arrays,unsigned np,const tdouble3 *pos
     ,const unsigned *idp,const tfloat3 *vel,const float *rhop)const;
-  void SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus);
-  void SaveData(unsigned npok,const JDataArrays& arrays,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus);
+  void SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays,const double *temp, unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus);
+  void SaveData(unsigned npok, const JDataArrays& arrays, const double *temp, unsigned ndom, const tdouble3 *vdom, const StInfoPartPlus *infoplus);
   void CheckTermination();
   void SaveDomainVtk(unsigned ndom,const tdouble3 *vdom)const;
   void SaveInitialDomainVtk()const;

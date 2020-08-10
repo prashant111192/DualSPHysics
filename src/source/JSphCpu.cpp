@@ -225,6 +225,10 @@ void JSphCpu::ResizeCpuMemoryParticles(unsigned npnew){
   tsymatrix3f *spstau     =SaveArrayCpu(Np,SpsTauc);
   tfloat3     *boundnormal=SaveArrayCpu(Np,BoundNormalc); //<vs_mddbc>
   tfloat3     *motionvel  =SaveArrayCpu(Np,MotionVelc);   //<vs_mddbc>
+  double	  *temp		  =SaveArrayCpu(Np,Tempc);
+  double	  *tempm1	  =SaveArrayCpu(Np,TempM1c);
+  double	  *temppre	  =SaveArrayCpu(Np,TempPrec);
+
   //-Frees pointers.
   ArraysCpu->Free(Idpc);
   ArraysCpu->Free(Codec);
@@ -1026,12 +1030,12 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
   if(t.npf){
     //-Interaction Fluid-Fluid.
     InteractionForcesFluid<tker,ftmode,tvisco,tdensity,shift> (t.npf,t.npb,false,Visco                 
-      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.code,t.idp,t.press
-      ,viscdt,t.ar,t.ace,t.delta,t.shiftmode,t.shiftposfs);
+      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.temp, t.code,t.idp,t.press
+      ,viscdt,t.ar,t.ace,t.atemp,t.delta,t.shiftmode,t.shiftposfs);
     //-Interaction Fluid-Bound.
     InteractionForcesFluid<tker,ftmode,tvisco,tdensity,shift> (t.npf,t.npb,true ,Visco*ViscoBoundFactor
-      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.code,t.idp,t.press
-      ,viscdt,t.ar,t.ace,t.delta,t.shiftmode,t.shiftposfs);
+      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.temp,t.code,t.idp,t.press
+      ,viscdt,t.ar,t.ace,t.atemp,t.delta,t.shiftmode,t.shiftposfs);
 
     //-Interaction of DEM Floating-Bound & Floating-Floating. //(DEM)
     if(UseDEM)InteractionForcesDEM(CaseNfloat,t.divdata,t.dcell
@@ -1043,7 +1047,7 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
   if(t.npbok){
     //-Interaction Bound-Fluid.
     InteractionForcesBound<tker,ftmode> (t.npbok,0,t.divdata,t.dcell
-      ,t.pos,t.velrhop,t.code,t.idp,viscdt,t.ar);
+      ,t.pos,t.velrhop,t.temp,t.code,t.idp,viscdt,t.ar, t.atemp);
   }
   res.viscdt=viscdt;
 }
@@ -1463,9 +1467,11 @@ void JSphCpu::ComputeSymplecticPre(double dt){
   //-Assign memory to variables Pre. | Asigna memoria a variables Pre.
   PosPrec=ArraysCpu->ReserveDouble3();
   VelrhopPrec=ArraysCpu->ReserveFloat4();
+  TempPrec = ArraysCpu->ReserveDouble();	//Temperature: reserve memory
   //-Change data to variables Pre to calculate new data. | Cambia datos a variables Pre para calcular nuevos datos.
   swap(PosPrec,Posc);         //Put value of Pos[] in PosPre[].         | Es decir... PosPre[] <= Pos[].
   swap(VelrhopPrec,Velrhopc); //Put value of Velrhop[] in VelrhopPre[]. | Es decir... VelrhopPre[] <= Velrhop[].
+  swap(TempPrec, Tempc);	  //Temperature: constant temperature for the boundary
   //-Calculate new values of particles. | Calcula nuevos datos de particulas.
   const double dt05=dt*.5;
   
@@ -1477,6 +1483,7 @@ void JSphCpu::ComputeSymplecticPre(double dt){
   for(int p=0;p<npb;p++){
     const tfloat4 vr=VelrhopPrec[p];
     const float rhopnew=float(double(vr.w)+dt05*Arc[p]);
+    Tempc[p]=TempPrec[p]+dt05*Atempc[p];	//Temperature: Calculate new temperature for the fluid
     Velrhopc[p]=TFloat4(vr.x,vr.y,vr.z,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorbed by boundary ones. | Evita q las boundary absorvan a las fluidas.
   }
 
@@ -1544,6 +1551,13 @@ void JSphCpu::ComputeSymplecticCorr(double dt){
   for(int p=0;p<npb;p++){
     const double epsilon_rdot=(-double(Arc[p])/double(Velrhopc[p].w))*dt;
     const float rhopnew=float(double(VelrhopPrec[p].w) * (2.-epsilon_rdot)/(2.+epsilon_rdot));
+
+    //========================================
+    //Temperature
+    const double epsilon_tdot=(-double(Atempc[p])/Tempc[p])*dt;
+    Tempc[p]=TempPrec[p]*(2.-epsilon_tdot)/(2.+epsilon_tdot);
+    //========================================
+
     Velrhopc[p]=TFloat4(0,0,0,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorbed by boundary ones. | Evita q las boundary absorvan a las fluidas.
   }
 
@@ -1596,6 +1610,7 @@ void JSphCpu::ComputeSymplecticCorr(double dt){
   //-Free memory assigned to variables Pre and ComputeSymplecticPre(). | Libera memoria asignada a variables Pre en ComputeSymplecticPre().
   ArraysCpu->Free(PosPrec);      PosPrec=NULL;
   ArraysCpu->Free(VelrhopPrec);  VelrhopPrec=NULL;
+  ArraysCpu->Free(TempPrec);	 TempPrec=NULL;		//Teperature: free memory
   TmcStop(Timers,TMC_SuComputeStep);
 }
 

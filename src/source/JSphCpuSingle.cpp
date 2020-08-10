@@ -495,8 +495,9 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
     tdouble3* pos=ArraysCpu->ReserveDouble3();
     tfloat3* vel=ArraysCpu->ReserveFloat3();
     float* rhop=ArraysCpu->ReserveFloat();
+    double* temp=ArraysCpu->ReserveDouble();
     typecode* code=ArraysCpu->ReserveTypeCode();
-    unsigned num=GetParticlesData(npfout,Np,false,idp,pos,vel,rhop,code);
+    unsigned num=GetParticlesData(npfout,Np,false,idp,pos,vel,rhop,temp,code);
     AddParticlesOut(npfout,idp,pos,vel,rhop,code);
     ArraysCpu->Free(idp);
     ArraysCpu->Free(pos);
@@ -519,8 +520,9 @@ void JSphCpuSingle::AbortBoundOut(){
   tdouble3* pos=ArraysCpu->ReserveDouble3();
   tfloat3* vel=ArraysCpu->ReserveFloat3();
   float* rhop=ArraysCpu->ReserveFloat();
+  double *temp=ArraysCpu->ReserveDouble();
   typecode* code=ArraysCpu->ReserveTypeCode();
-  GetParticlesData(nboundout,Np,false,idp,pos,vel,rhop,code);
+  GetParticlesData(nboundout,Np,false,idp,pos,vel,rhop,temp,code);
   //-Shows excluded particles information and aborts execution.
   JSph::AbortBoundOut(Log,nboundout,idp,pos,vel,rhop,code);
 }
@@ -538,7 +540,7 @@ void JSphCpuSingle::Interaction_Forces(TpInterStep interstep){
   //-Interaction of Fluid-Fluid/Bound & Bound-Fluid (forces and DEM). | Interaccion Fluid-Fluid/Bound & Bound-Fluid (forces and DEM).
   const stinterparmsc parms=StInterparmsc(Np,Npb,NpbOk
     ,DivData,Dcellc
-    ,Posc,Velrhopc,Idpc,Codec,Pressc,Arc,Acec,Deltac
+    ,Posc,Velrhopc,Tempc, Idpc,Codec,Pressc,Arc, Acec,Atempc, Deltac
     ,ShiftingMode,ShiftPosfsc
     ,SpsTauc,SpsGradvelc
   );
@@ -1106,13 +1108,15 @@ void JSphCpuSingle::SaveData(){
   tdouble3 *pos=NULL;
   tfloat3 *vel=NULL;
   float *rhop=NULL;
+  double *temp=NULL;	//Temperature: temporal array.
   if(save){
     //-Assign memory and collect particle values. | Asigna memoria y recupera datos de las particulas.
     idp=ArraysCpu->ReserveUint();
     pos=ArraysCpu->ReserveDouble3();
     vel=ArraysCpu->ReserveFloat3();
     rhop=ArraysCpu->ReserveFloat();
-    unsigned npnormal=GetParticlesData(Np,0,PeriActive!=0,idp,pos,vel,rhop,NULL);
+    temp=ArraysCpu->ReserveDouble();	//Temperature: allocate memory.
+    unsigned npnormal=GetParticlesData(Np,0,PeriActive!=0,idp,pos,vel,rhop,temp,NULL); //Added Temperature: new temp param.
     if(npnormal!=npsave)Run_Exceptioon("The number of particles is invalid.");
   }
   //-Gather additional information. | Reune informacion adicional.
@@ -1136,12 +1140,13 @@ void JSphCpuSingle::SaveData(){
   //-Stores particle data. | Graba datos de particulas.
   JDataArrays arrays;
   AddBasicArrays(arrays,npsave,pos,idp,vel,rhop);
-  JSph::SaveData(npsave,arrays,1,vdom,&infoplus);
+  JSph::SaveData(npsave,arrays,temp,1,vdom,&infoplus); //Temperature: new temp param
   //-Free auxiliary memory for particle data. | Libera memoria auxiliar para datos de particulas.
   ArraysCpu->Free(idp);
   ArraysCpu->Free(pos);
   ArraysCpu->Free(vel);
   ArraysCpu->Free(rhop);
+  ArraysCpu->Free(temp);	//Temperature: free memory.
   if(UseNormals && SvNormals)SaveVtkNormals("normals/Normals.vtk",Part,npsave,Npb,Posc,Idpc,BoundNormalc); //<vs_mddbc>
   TmcStop(Timers,TMC_SuSavePart);
 }

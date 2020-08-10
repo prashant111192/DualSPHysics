@@ -2423,7 +2423,7 @@ void JSph::AddBasicArrays(JDataArrays &arrays,unsigned np,const tdouble3 *pos
 /// Graba los ficheros de datos de particulas.
 //==============================================================================
 void JSph::SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays
-  ,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
+  ,const double *temp, unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
 {
   //-Stores particle data and/or information in bi4 format.
   //-Graba datos de particulas y/o informacion en formato bi4.
@@ -2477,6 +2477,9 @@ void JSph::SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays
       const unsigned *idp =arrays.GetArrayUint   ("Idp");
       const tfloat3  *vel =arrays.GetArrayFloat3 ("Vel");
       const float    *rhop=arrays.GetArrayFloat  ("Rhop");
+
+      if(temp)DataBi4->AddPartData("Temp", npok, temp); //Temperature:Add Temperature Data.
+
       if(SvPosDouble){
         DataBi4->AddPartData(npok,idp,pos,vel,rhop);
       }
@@ -2554,7 +2557,7 @@ void JSph::SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays
 /// Genera los ficheros de salida de datos.
 //==============================================================================
 void JSph::SaveData(unsigned npok,const JDataArrays& arrays
-  ,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
+  ,const double*temp, unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
 {
   string suffixpartx=fun::PrintStr("_%04d",Part);
 
@@ -2566,7 +2569,7 @@ void JSph::SaveData(unsigned npok,const JDataArrays& arrays
   AddOutCount(noutpos,noutrhop,noutmove);
 
   //-Stores data files of particles.
-  SavePartData(npok,nout,arrays,ndom,vdom,infoplus);
+  SavePartData(npok,nout,arrays,temp, ndom,vdom,infoplus);
 
   //-Reinitialises limits of dt. | Reinicia limites de dt.
   PartDtMin=DBL_MAX; PartDtMax=-DBL_MAX;

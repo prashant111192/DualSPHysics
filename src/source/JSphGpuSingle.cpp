@@ -889,7 +889,8 @@ void JSphGpuSingle::SaveData(){
   //-Stores particle data. | Graba datos de particulas.
   JDataArrays arrays;
   AddBasicArrays(arrays,npsave,AuxPos,Idp,AuxVel,AuxRhop);
-  JSph::SaveData(npsave,arrays,1,vdom,&infoplus);
+  const double temporaryCpu=1.0;				//Delete immidiately...only a placeholder for the CPU to run
+  JSph::SaveData(npsave,arrays,&temporaryCpu,1,vdom,&infoplus); //
   if(UseNormals && SvNormals)SaveVtkNormalsGpu("normals/Normals.vtk",Part,npsave,Npb,Posxyg,Poszg,Idpg,BoundNormalg); //<vs_mddbc>
   TmgStop(Timers,TMG_SuSavePart);
 }

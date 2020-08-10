@@ -35,11 +35,13 @@ typedef struct{
   const unsigned *dcell;
   const tdouble3 *pos;
   const tfloat4 *velrhop;
+  const double *temp;
   const unsigned *idp;
   const typecode *code;
   const float *press;
   float* ar;
   tfloat3 *ace;
+  float *atemp;
   float *delta;
   TpShifting shiftmode;
   tfloat4 *shiftposfs;
@@ -50,18 +52,18 @@ typedef struct{
 ///Collects parameters for particle interaction on CPU.
 inline stinterparmsc StInterparmsc(unsigned np,unsigned npb,unsigned npbok
   ,StDivDataCpu divdata,const unsigned *dcell
-  ,const tdouble3 *pos,const tfloat4 *velrhop,const unsigned *idp,const typecode *code
+  ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const unsigned *idp,const typecode *code
   ,const float *press
-  ,float* ar,tfloat3 *ace,float *delta
+  ,float* ar,tfloat3 *ace, float *atemp, float *delta
   ,TpShifting shiftmode,tfloat4 *shiftposfs
   ,tsymatrix3f *spstau,tsymatrix3f *spsgradvel
 )
 {
   stinterparmsc d={np,npb,npbok,(np-npb)
     ,divdata,dcell
-    ,pos,velrhop,idp,code
+    ,pos,velrhop,temp,idp,code
     ,press
-    ,ar,ace,delta
+    ,ar,ace,atemp,delta
     ,shiftmode,shiftposfs
     ,spstau,spsgradvel
   };
