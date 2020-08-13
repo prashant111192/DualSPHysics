@@ -2308,8 +2308,19 @@ void JSph::ConfigSaveData(unsigned piece,unsigned pieces,std::string div){
 /// Stores new excluded particles until recordering next PART.
 /// Almacena nuevas particulas excluidas hasta la grabacion del proximo PART.
 //==============================================================================
-void JSph::AddParticlesOut(unsigned nout,const unsigned *idp,const tdouble3 *pos
-  ,const tfloat3 *vel,const float *rhop,const typecode *code)
+void JSph::AddParticlesOut_11(unsigned nout, const unsigned *idp, const tdouble3 *pos
+  , const tfloat3 *vel, const float *rhop, const double *temp, const typecode *code)
+{
+  PartsOut->AddParticles_11(nout,idp,pos,vel,rhop,temp,code);
+}
+
+
+//==============================================================================
+/// Stores new excluded particles until recordering next PART.
+/// Almacena nuevas particulas excluidas hasta la grabacion del proximo PART.
+//==============================================================================
+void JSph::AddParticlesOut(unsigned nout, const unsigned *idp, const tdouble3 *pos
+  , const tfloat3 *vel, const float *rhop,  const typecode *code)
 {
   PartsOut->AddParticles(nout,idp,pos,vel,rhop,code);
 }

@@ -820,9 +820,14 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
             visc=max(dot_rr2,visc);
             if(tvisco==VISCO_Artificial){//-Artificial viscosity.
               if(dot<0){
+               float tempvisco = visco;
+               if(*temp<274.0){
+                   tempvisco=100.0;
+               }
                 const float amubar=KernelH*dot_rr2;  //amubar=CTE.h*dot/(rr2+CTE.eta2);
                 const float robar=(rhopp1+velrhop2.w)*0.5f;
-                const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
+                //const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
+                const float pi_visc=(-tempvisco*cbar*amubar/robar)*massp2;
                 acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
               }
             }

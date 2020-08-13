@@ -57,6 +57,7 @@ protected:
   tdouble3 *Pos;
   tfloat3 *Vel;
   float *Rhop;
+  double *Temp;
   byte *Motive; ///<Motives for exclusion. 1:position, 2:rhop, 3:velocity.
 
   unsigned MemAllocs;     ///<Number of allocations.
@@ -73,6 +74,9 @@ public:
 
   unsigned GetMemAllocs()const{ return(MemAllocs); }
   llong GetAllocMemory()const{ return(MemCpuParticles); }
+
+  void AddParticles_11(unsigned np,const unsigned* idp,const tdouble3* pos
+    ,const tfloat3* vel,const float* rhop,const double* temp,const typecode* code);
 
   void AddParticles(unsigned np,const unsigned* idp,const tdouble3* pos
     ,const tfloat3* vel,const float* rhop,const typecode* code);
