@@ -464,7 +464,7 @@ protected:
   void PrintHeadPart();
 
   void ConfigSaveData(unsigned piece,unsigned pieces,std::string div);
-  void AddParticlesOut_11(unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop, const double *temp,const typecode *code);
+ // void AddParticlesOut_11(unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop, const double *temp,const typecode *code); //Temperature
   void AddParticlesOut(unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop, const typecode *code);
   void AbortBoundOut(JLog2 *log,unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop,const typecode *code);
 

@@ -67,7 +67,7 @@ void JDsPartsOut::AllocMemory(unsigned size,bool reset){
     delete[] Pos;    Pos=NULL;
     delete[] Vel;    Vel=NULL;
     delete[] Rhop;   Rhop=NULL;
-    delete[] Temp;	 Temp=NULL;
+    //delete[] Temp;	 Temp=NULL;		Temperature
     delete[] Motive; Motive=NULL;
   }
   Size=unsigned((size+SizeUnit-1)/SizeUnit)*SizeUnit;
@@ -79,7 +79,7 @@ void JDsPartsOut::AllocMemory(unsigned size,bool reset){
       Pos   =fun::ResizeAlloc(Pos   ,Count,Size);  MemCpuParticles+=sizeof(tdouble3)*Size;
       Vel   =fun::ResizeAlloc(Vel   ,Count,Size);  MemCpuParticles+=sizeof(tfloat3) *Size;
       Rhop  =fun::ResizeAlloc(Rhop  ,Count,Size);  MemCpuParticles+=sizeof(float)   *Size;
-      Temp  =fun::ResizeAlloc(Temp  ,Count,Size);  MemCpuParticles+=sizeof(double)   *Size;
+      //Temp  =fun::ResizeAlloc(Temp  ,Count,Size);  MemCpuParticles+=sizeof(double)   *Size; Temperature
       Motive=fun::ResizeAlloc(Motive,Count,Size);  MemCpuParticles+=sizeof(byte)    *Size;
     }
     catch(const std::bad_alloc){
@@ -110,9 +110,9 @@ void JDsPartsOut::AddData(unsigned np,const typecode* code){
 }
 
 //==============================================================================
-/// Adds out particles data.
+/// Adds out particles data. 	Temperature
 //==============================================================================
-void JDsPartsOut::AddParticles_11(unsigned np,const unsigned* idp,const tdouble3* pos
+/*void JDsPartsOut::AddParticles_11(unsigned np,const unsigned* idp,const tdouble3* pos
   ,const tfloat3* vel,const float* rhop,const double* temp, const typecode* code)
 {
   if(Count+np>Size)AllocMemory(Count+np+SizeUnit,false);
@@ -120,10 +120,10 @@ void JDsPartsOut::AddParticles_11(unsigned np,const unsigned* idp,const tdouble3
   memcpy(Pos +Count,pos ,sizeof(tdouble3)*np);
   memcpy(Vel +Count,vel ,sizeof(tfloat3 )*np);
   memcpy(Rhop+Count,rhop,sizeof(float   )*np);
-  memcpy(Temp+Count,temp,sizeof(double   )*np);
+  memcpy(Temp+Count,temp,sizeof(double  )*np);
   //-Adds motive information and updates numbers.
   AddData(np,code);
-}
+}*/
 
 
 //==============================================================================

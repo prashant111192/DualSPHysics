@@ -2308,11 +2308,14 @@ void JSph::ConfigSaveData(unsigned piece,unsigned pieces,std::string div){
 /// Stores new excluded particles until recordering next PART.
 /// Almacena nuevas particulas excluidas hasta la grabacion del proximo PART.
 //==============================================================================
+//Temperature
+/*
 void JSph::AddParticlesOut_11(unsigned nout, const unsigned *idp, const tdouble3 *pos
   , const tfloat3 *vel, const float *rhop, const double *temp, const typecode *code)
 {
   PartsOut->AddParticles_11(nout,idp,pos,vel,rhop,temp,code);
 }
+*/
 
 
 //==============================================================================
@@ -2429,6 +2432,7 @@ void JSph::AddBasicArrays(JDataArrays &arrays,unsigned np,const tdouble3 *pos
   arrays.AddArray("Rhop",np,rhop);
 }
 
+//Maybe add a temperature array before this???
 //==============================================================================
 /// Stores files of particle data.
 /// Graba los ficheros de datos de particulas.
@@ -2580,7 +2584,7 @@ void JSph::SaveData(unsigned npok,const JDataArrays& arrays
   AddOutCount(noutpos,noutrhop,noutmove);
 
   //-Stores data files of particles.
-  SavePartData(npok,nout,arrays,temp, ndom,vdom,infoplus);
+  SavePartData(npok,nout,arrays,temp, ndom,vdom,infoplus);		//Temperature along with others
 
   //-Reinitialises limits of dt. | Reinicia limites de dt.
   PartDtMin=DBL_MAX; PartDtMax=-DBL_MAX;

@@ -225,7 +225,7 @@ void JSphCpu::ResizeCpuMemoryParticles(unsigned npnew){
   tsymatrix3f *spstau     =SaveArrayCpu(Np,SpsTauc);
   tfloat3     *boundnormal=SaveArrayCpu(Np,BoundNormalc); //<vs_mddbc>
   tfloat3     *motionvel  =SaveArrayCpu(Np,MotionVelc);   //<vs_mddbc>
-  double	  *temp		  =SaveArrayCpu(Np,Tempc);
+  double	  *temp		  =SaveArrayCpu(Np,Tempc);			//Temperature
   double	  *tempm1	  =SaveArrayCpu(Np,TempM1c);
   double	  *temppre	  =SaveArrayCpu(Np,TempPrec);
 
@@ -241,6 +241,11 @@ void JSphCpu::ResizeCpuMemoryParticles(unsigned npnew){
   ArraysCpu->Free(SpsTauc);
   ArraysCpu->Free(BoundNormalc);  //<vs_mddbc>
   ArraysCpu->Free(MotionVelc);    //<vs_mddbc>
+  //Temperature
+  ArraysCpu->Free(Tempc);
+  ArraysCpu->Free(TempM1c);
+  ArraysCpu->Free(TempPrec);
+
   //-Resizes CPU memory allocation.
   const double mbparticle=(double(MemCpuParticles)/(1024*1024))/CpuParticlesSize; //-MB por particula.
   Log->Printf("**JSphCpu: Requesting cpu memory for %u particles: %.1f MB.",npnew,mbparticle*npnew);
@@ -251,12 +256,17 @@ void JSphCpu::ResizeCpuMemoryParticles(unsigned npnew){
   Dcellc  =ArraysCpu->ReserveUint();
   Posc    =ArraysCpu->ReserveDouble3();
   Velrhopc=ArraysCpu->ReserveFloat4();
+  //temperature
+  Tempc   =ArraysCpu->ReserveDouble();
   if(velrhopm1)  VelrhopM1c  =ArraysCpu->ReserveFloat4();
   if(pospre)     PosPrec     =ArraysCpu->ReserveDouble3();
   if(velrhoppre) VelrhopPrec =ArraysCpu->ReserveFloat4();
   if(spstau)     SpsTauc     =ArraysCpu->ReserveSymatrix3f();
   if(boundnormal)BoundNormalc=ArraysCpu->ReserveFloat3(); //<vs_mddbc>
   if(motionvel)  MotionVelc  =ArraysCpu->ReserveFloat3(); //<vs_mddbc>
+  //Temperature
+  if(tempm1)    TempM1c    = ArraysCpu->ReserveDouble();
+  if(temppre)   TempPrec   = ArraysCpu->ReserveDouble();
   //-Restore data in CPU memory.
   RestoreArrayCpu(Np,idp,Idpc);
   RestoreArrayCpu(Np,code,Codec);
@@ -269,6 +279,10 @@ void JSphCpu::ResizeCpuMemoryParticles(unsigned npnew){
   RestoreArrayCpu(Np,spstau,SpsTauc);
   RestoreArrayCpu(Np,boundnormal,BoundNormalc); //<vs_mddbc>
   RestoreArrayCpu(Np,motionvel,MotionVelc);     //<vs_mddbc>
+  //Temperature
+  RestoreArrayCpu(Np,temp,Tempc);
+  RestoreArrayCpu(Np,tempm1,TempM1c);
+  RestoreArrayCpu(Np,temppre,TempPrec);
   //-Updates values.
   CpuParticlesSize=npnew;
   MemCpuParticles=ArraysCpu->GetAllocMemoryCpu();
@@ -820,10 +834,11 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
             visc=max(dot_rr2,visc);
             if(tvisco==VISCO_Artificial){//-Artificial viscosity.
               if(dot<0){
+                  //Viscosity and temperature Prashant VISCOTEMP
                float tempvisco = visco;
-               if(*temp<274.0){
+              /* if(*temp<274.0){
                    tempvisco=100.0;
-               }
+               }*/
                 const float amubar=KernelH*dot_rr2;  //amubar=CTE.h*dot/(rr2+CTE.eta2);
                 const float robar=(rhopp1+velrhop2.w)*0.5f;
                 //const float pi_visc=(-visco*cbar*amubar/robar)*massp2;

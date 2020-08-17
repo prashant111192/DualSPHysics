@@ -28,3 +28,13 @@
 2020-08-13 10:51:04,113 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
 2020-08-13 10:51:04,874 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
 2020-08-13 10:51:04,874 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
+2020-08-14 10:52:38,261 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
+2020-08-14 10:52:38,261 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
+2020-08-14 11:22:48,177 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
+2020-08-14 11:22:48,177 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
+2020-08-14 13:43:52,272 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
+2020-08-14 13:43:52,272 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
+2020-08-15 14:37:54,619 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
+2020-08-15 14:37:54,619 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
+2020-08-17 09:18:04,631 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
+2020-08-17 09:18:04,631 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]

@@ -498,7 +498,8 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
     double* temp=ArraysCpu->ReserveDouble();
     typecode* code=ArraysCpu->ReserveTypeCode();
     unsigned num=GetParticlesData(npfout,Np,false,idp,pos,vel,rhop,temp,code);
-    AddParticlesOut_11(npfout,idp,pos,vel,rhop,temp,code);
+    //AddParticlesOut_11(npfout,idp,pos,vel,rhop,temp,code);
+    AddParticlesOut(npfout,idp,pos,vel,rhop,code);
     ArraysCpu->Free(idp);
     ArraysCpu->Free(pos);
     ArraysCpu->Free(vel);

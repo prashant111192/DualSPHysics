@@ -1,0 +1,1792 @@
+diff --git a/.gitignore b/.gitignore
+index ae0f428..36813ef 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,3 +19,11 @@ bin/windows/*.iobj
+ bin/windows/*.ipdb
+ bin/windows/*.lib
+ bin/windows/*.exp
++
++
++# Build Directories
++src/build*/
++src_mphase/DSPH_v5.0_NNewtonian/build*/
++# bin/
++Tests/
++
+diff --git a/bin/linux/DualSPHysics5.0CPU_linux64 b/bin/linux/DualSPHysics5.0CPU_linux64
+old mode 100644
+new mode 100755
+index 00799f1..b5db431
+Binary files a/bin/linux/DualSPHysics5.0CPU_linux64 and b/bin/linux/DualSPHysics5.0CPU_linux64 differ
+diff --git a/bin/linux/DualSPHysics5.0_linux64 b/bin/linux/DualSPHysics5.0_linux64
+old mode 100644
+new mode 100755
+index a6e46d4..0c5d295
+Binary files a/bin/linux/DualSPHysics5.0_linux64 and b/bin/linux/DualSPHysics5.0_linux64 differ
+diff --git a/bin/linux/libChronoEngine.so b/bin/linux/libChronoEngine.so
+old mode 100644
+new mode 100755
+diff --git a/bin/linux/libChronoEngine_parallel.so b/bin/linux/libChronoEngine_parallel.so
+old mode 100644
+new mode 100755
+diff --git a/bin/linux/libdsphchrono.so b/bin/linux/libdsphchrono.so
+old mode 100644
+new mode 100755
+diff --git a/bin/linux/logs/myeasylog.log b/bin/linux/logs/myeasylog.log
+new file mode 100644
+index 0000000..a52e6e5
+--- /dev/null
++++ b/bin/linux/logs/myeasylog.log
+@@ -0,0 +1,30 @@
++2020-08-12 20:14:00,122 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGINT] signal
++2020-08-12 20:14:00,122 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:03:34,299 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:03:34,299 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:37:57,170 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:37:57,170 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:50:59,683 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:50:59,683 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:01,266 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:01,266 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:01,739 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:01,739 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:02,103 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:02,103 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:02,436 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:02,436 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:02,738 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:02,738 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:03,005 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:03,005 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:03,257 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:03,257 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:03,545 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:03,545 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:03,809 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:03,809 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:04,113 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:04,113 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
++2020-08-13 10:51:04,874 FATAL [default] CRASH HANDLED; Application has crashed due to [SIGSEGV] signal
++2020-08-13 10:51:04,874 WARN  [default] Aborting application. Reason: Fatal log at [/exports/imartinez/source/Chrono4.0.0/ChronoSource/src/chrono_thirdparty/easylogging/easylogging.h:5583]
+diff --git a/src/logs/myeasylog.log b/src/logs/myeasylog.log
+new file mode 100644
+index 0000000..e69de29
+diff --git a/src/source/CMakeLists.txt.user b/src/source/CMakeLists.txt.user
+new file mode 100644
+index 0000000..2cc375a
+--- /dev/null
++++ b/src/source/CMakeLists.txt.user
+@@ -0,0 +1,791 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE QtCreatorProject>
++<!-- Written by QtCreator 4.12.4, 2020-08-13T10:38:07. -->
++<qtcreator>
++ <data>
++  <variable>EnvironmentId</variable>
++  <value type="QByteArray">{38d7f5e1-f2d6-4535-b112-e7708e92c2f2}</value>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.ActiveTarget</variable>
++  <value type="int">1</value>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.EditorSettings</variable>
++  <valuemap type="QVariantMap">
++   <value type="bool" key="EditorConfiguration.AutoIndent">true</value>
++   <value type="bool" key="EditorConfiguration.AutoSpacesForTabs">false</value>
++   <value type="bool" key="EditorConfiguration.CamelCaseNavigation">true</value>
++   <valuemap type="QVariantMap" key="EditorConfiguration.CodeStyle.0">
++    <value type="QString" key="language">Cpp</value>
++    <valuemap type="QVariantMap" key="value">
++     <value type="QByteArray" key="CurrentPreferences">CppGlobal</value>
++    </valuemap>
++   </valuemap>
++   <valuemap type="QVariantMap" key="EditorConfiguration.CodeStyle.1">
++    <value type="QString" key="language">QmlJS</value>
++    <valuemap type="QVariantMap" key="value">
++     <value type="QByteArray" key="CurrentPreferences">QmlJSGlobal</value>
++    </valuemap>
++   </valuemap>
++   <value type="int" key="EditorConfiguration.CodeStyle.Count">2</value>
++   <value type="QByteArray" key="EditorConfiguration.Codec">UTF-8</value>
++   <value type="bool" key="EditorConfiguration.ConstrainTooltips">false</value>
++   <value type="int" key="EditorConfiguration.IndentSize">4</value>
++   <value type="bool" key="EditorConfiguration.KeyboardTooltips">false</value>
++   <value type="int" key="EditorConfiguration.MarginColumn">80</value>
++   <value type="bool" key="EditorConfiguration.MouseHiding">true</value>
++   <value type="bool" key="EditorConfiguration.MouseNavigation">true</value>
++   <value type="int" key="EditorConfiguration.PaddingMode">1</value>
++   <value type="bool" key="EditorConfiguration.ScrollWheelZooming">true</value>
++   <value type="bool" key="EditorConfiguration.ShowMargin">false</value>
++   <value type="int" key="EditorConfiguration.SmartBackspaceBehavior">0</value>
++   <value type="bool" key="EditorConfiguration.SmartSelectionChanging">true</value>
++   <value type="bool" key="EditorConfiguration.SpacesForTabs">true</value>
++   <value type="int" key="EditorConfiguration.TabKeyBehavior">0</value>
++   <value type="int" key="EditorConfiguration.TabSize">8</value>
++   <value type="bool" key="EditorConfiguration.UseGlobal">true</value>
++   <value type="int" key="EditorConfiguration.Utf8BomBehavior">1</value>
++   <value type="bool" key="EditorConfiguration.addFinalNewLine">true</value>
++   <value type="bool" key="EditorConfiguration.cleanIndentation">true</value>
++   <value type="bool" key="EditorConfiguration.cleanWhitespace">true</value>
++   <value type="bool" key="EditorConfiguration.inEntireDocument">false</value>
++  </valuemap>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.PluginSettings</variable>
++  <valuemap type="QVariantMap">
++   <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
++   <value type="bool" key="ClangCodeModel.UseGlobalConfig">true</value>
++   <value type="QString" key="ClangCodeModel.WarningConfigId">Builtin.Questionable</value>
++   <valuemap type="QVariantMap" key="ClangTools">
++    <value type="bool" key="ClangTools.BuildBeforeAnalysis">true</value>
++    <value type="QString" key="ClangTools.DiagnosticConfig">Builtin.DefaultTidyAndClazy</value>
++    <value type="int" key="ClangTools.ParallelJobs">4</value>
++    <valuelist type="QVariantList" key="ClangTools.SelectedDirs"/>
++    <valuelist type="QVariantList" key="ClangTools.SelectedFiles"/>
++    <valuelist type="QVariantList" key="ClangTools.SuppressedDiagnostics"/>
++    <value type="bool" key="ClangTools.UseGlobalSettings">true</value>
++   </valuemap>
++  </valuemap>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.Target.0</variable>
++  <valuemap type="QVariantMap">
++   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Imported Kit</value>
++   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Imported Kit</value>
++   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{885308b0-eb15-4595-be26-8eca70255a39}</value>
++   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
++   <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
++   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">1</value>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=Debug</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Debug</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Debug</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=Release</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-Release</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=RelWithDebInfo</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-RelWithDebInfo</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release with Debug Information</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.3">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=MinSizeRel</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Imported_Kit-MinSizeRel</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minimum Size Release</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">4</value>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">0</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Deploy</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Deploy</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Deploy</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">1</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.DeployConfiguration.CustomData"/>
++    <value type="bool" key="ProjectExplorer.DeployConfiguration.CustomDataEnabled">false</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.DefaultDeployConfiguration</value>
++   </valuemap>
++   <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
++    <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.Events">
++     <value type="QString">cpu-cycles</value>
++    </valuelist>
++    <valuelist type="QVariantList" key="Analyzer.Perf.ExtraArguments"/>
++    <value type="int" key="Analyzer.Perf.Frequency">250</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.RecordArguments">
++     <value type="QString">-e</value>
++     <value type="QString">cpu-cycles</value>
++     <value type="QString">--call-graph</value>
++     <value type="QString">dwarf,4096</value>
++     <value type="QString">-F</value>
++     <value type="QString">250</value>
++    </valuelist>
++    <value type="QString" key="Analyzer.Perf.SampleMode">-F</value>
++    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
++    <value type="int" key="Analyzer.Perf.StackSize">4096</value>
++    <value type="bool" key="Analyzer.QmlProfiler.AggregateTraces">false</value>
++    <value type="bool" key="Analyzer.QmlProfiler.FlushEnabled">false</value>
++    <value type="uint" key="Analyzer.QmlProfiler.FlushInterval">1000</value>
++    <value type="QString" key="Analyzer.QmlProfiler.LastTraceFile"></value>
++    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.AddedSuppressionFiles"/>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectSystime">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableBranchSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableCacheSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableEventToolTips">true</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.MinimumCostRatio">0.01</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">10</value>
++    <value type="bool" key="Analyzer.Valgrind.FilterExternalIssues">true</value>
++    <value type="QString" key="Analyzer.Valgrind.KCachegrindExecutable">kcachegrind</value>
++    <value type="int" key="Analyzer.Valgrind.LeakCheckOnFinish">1</value>
++    <value type="int" key="Analyzer.Valgrind.NumCallers">25</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.RemovedSuppressionFiles"/>
++    <value type="int" key="Analyzer.Valgrind.SelfModifyingCodeDetection">1</value>
++    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
++    <value type="bool" key="Analyzer.Valgrind.ShowReachable">false</value>
++    <value type="bool" key="Analyzer.Valgrind.TrackOrigins">true</value>
++    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">valgrind</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.VisibleErrorKinds">
++     <value type="int">0</value>
++     <value type="int">1</value>
++     <value type="int">2</value>
++     <value type="int">3</value>
++     <value type="int">4</value>
++     <value type="int">5</value>
++     <value type="int">6</value>
++     <value type="int">7</value>
++     <value type="int">8</value>
++     <value type="int">9</value>
++     <value type="int">10</value>
++     <value type="int">11</value>
++     <value type="int">12</value>
++     <value type="int">13</value>
++     <value type="int">14</value>
++    </valuelist>
++    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
++    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">DualSPHysics5.0CPU_linux64</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.DualSPHysics5.0CPU_linux64</value>
++    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">DualSPHysics5.0CPU_linux64</value>
++    <value type="QString" key="RunConfiguration.Arguments"></value>
++    <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
++    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
++    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
++    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
++    <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
++    <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.Events">
++     <value type="QString">cpu-cycles</value>
++    </valuelist>
++    <valuelist type="QVariantList" key="Analyzer.Perf.ExtraArguments"/>
++    <value type="int" key="Analyzer.Perf.Frequency">250</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.RecordArguments">
++     <value type="QString">-e</value>
++     <value type="QString">cpu-cycles</value>
++     <value type="QString">--call-graph</value>
++     <value type="QString">dwarf,4096</value>
++     <value type="QString">-F</value>
++     <value type="QString">250</value>
++    </valuelist>
++    <value type="QString" key="Analyzer.Perf.SampleMode">-F</value>
++    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
++    <value type="int" key="Analyzer.Perf.StackSize">4096</value>
++    <value type="bool" key="Analyzer.QmlProfiler.AggregateTraces">false</value>
++    <value type="bool" key="Analyzer.QmlProfiler.FlushEnabled">false</value>
++    <value type="uint" key="Analyzer.QmlProfiler.FlushInterval">1000</value>
++    <value type="QString" key="Analyzer.QmlProfiler.LastTraceFile"></value>
++    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.AddedSuppressionFiles"/>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectSystime">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableBranchSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableCacheSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableEventToolTips">true</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.MinimumCostRatio">0.01</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">10</value>
++    <value type="bool" key="Analyzer.Valgrind.FilterExternalIssues">true</value>
++    <value type="QString" key="Analyzer.Valgrind.KCachegrindExecutable">kcachegrind</value>
++    <value type="int" key="Analyzer.Valgrind.LeakCheckOnFinish">1</value>
++    <value type="int" key="Analyzer.Valgrind.NumCallers">25</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.RemovedSuppressionFiles"/>
++    <value type="int" key="Analyzer.Valgrind.SelfModifyingCodeDetection">1</value>
++    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
++    <value type="bool" key="Analyzer.Valgrind.ShowReachable">false</value>
++    <value type="bool" key="Analyzer.Valgrind.TrackOrigins">true</value>
++    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">valgrind</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.VisibleErrorKinds">
++     <value type="int">0</value>
++     <value type="int">1</value>
++     <value type="int">2</value>
++     <value type="int">3</value>
++     <value type="int">4</value>
++     <value type="int">5</value>
++     <value type="int">6</value>
++     <value type="int">7</value>
++     <value type="int">8</value>
++     <value type="int">9</value>
++     <value type="int">10</value>
++     <value type="int">11</value>
++     <value type="int">12</value>
++     <value type="int">13</value>
++     <value type="int">14</value>
++    </valuelist>
++    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
++    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">DualSPHysics5.0_linux64</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.DualSPHysics5.0_linux64</value>
++    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">DualSPHysics5.0_linux64</value>
++    <value type="QString" key="RunConfiguration.Arguments"></value>
++    <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
++    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
++    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
++    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">false</value>
++    <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/TempBUild</value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux</value>
++   </valuemap>
++   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
++  </valuemap>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.Target.1</variable>
++  <valuemap type="QVariantMap">
++   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
++   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
++   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{58d79d30-77d5-400d-b154-308c0e138f46}</value>
++   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
++   <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
++   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=Debug</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Desktop-Debug</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Debug</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=Release</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Desktop-Release</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=RelWithDebInfo</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Desktop-RelWithDebInfo</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release with Debug Information</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.3">
++    <valuelist type="QVariantList" key="CMake.Configuration">
++     <value type="QString">CMAKE_BUILD_TYPE:STRING=MinSizeRel</value>
++     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
++     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
++     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
++     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
++    </valuelist>
++    <value type="int" key="EnableQmlDebugging">2</value>
++    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/src/build-source-Desktop-MinSizeRel</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">all</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
++    </valuemap>
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">
++     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
++      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
++      <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
++       <value type="QString">clean</value>
++      </valuelist>
++      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
++      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
++     </valuemap>
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
++    <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
++    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minimum Size Release</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeBuildConfiguration</value>
++   </valuemap>
++   <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">4</value>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">
++    <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
++     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">0</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Deploy</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Deploy</value>
++     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Deploy</value>
++    </valuemap>
++    <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">1</value>
++    <valuemap type="QVariantMap" key="ProjectExplorer.DeployConfiguration.CustomData"/>
++    <value type="bool" key="ProjectExplorer.DeployConfiguration.CustomDataEnabled">false</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.DefaultDeployConfiguration</value>
++   </valuemap>
++   <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
++    <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.Events">
++     <value type="QString">cpu-cycles</value>
++    </valuelist>
++    <valuelist type="QVariantList" key="Analyzer.Perf.ExtraArguments"/>
++    <value type="int" key="Analyzer.Perf.Frequency">250</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.RecordArguments">
++     <value type="QString">-e</value>
++     <value type="QString">cpu-cycles</value>
++     <value type="QString">--call-graph</value>
++     <value type="QString">dwarf,4096</value>
++     <value type="QString">-F</value>
++     <value type="QString">250</value>
++    </valuelist>
++    <value type="QString" key="Analyzer.Perf.SampleMode">-F</value>
++    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
++    <value type="int" key="Analyzer.Perf.StackSize">4096</value>
++    <value type="bool" key="Analyzer.QmlProfiler.AggregateTraces">false</value>
++    <value type="bool" key="Analyzer.QmlProfiler.FlushEnabled">false</value>
++    <value type="uint" key="Analyzer.QmlProfiler.FlushInterval">1000</value>
++    <value type="QString" key="Analyzer.QmlProfiler.LastTraceFile"></value>
++    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.AddedSuppressionFiles"/>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectSystime">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableBranchSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableCacheSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableEventToolTips">true</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.MinimumCostRatio">0.01</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">10</value>
++    <value type="bool" key="Analyzer.Valgrind.FilterExternalIssues">true</value>
++    <value type="QString" key="Analyzer.Valgrind.KCachegrindExecutable">kcachegrind</value>
++    <value type="int" key="Analyzer.Valgrind.LeakCheckOnFinish">1</value>
++    <value type="int" key="Analyzer.Valgrind.NumCallers">25</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.RemovedSuppressionFiles"/>
++    <value type="int" key="Analyzer.Valgrind.SelfModifyingCodeDetection">1</value>
++    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
++    <value type="bool" key="Analyzer.Valgrind.ShowReachable">false</value>
++    <value type="bool" key="Analyzer.Valgrind.TrackOrigins">true</value>
++    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">valgrind</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.VisibleErrorKinds">
++     <value type="int">0</value>
++     <value type="int">1</value>
++     <value type="int">2</value>
++     <value type="int">3</value>
++     <value type="int">4</value>
++     <value type="int">5</value>
++     <value type="int">6</value>
++     <value type="int">7</value>
++     <value type="int">8</value>
++     <value type="int">9</value>
++     <value type="int">10</value>
++     <value type="int">11</value>
++     <value type="int">12</value>
++     <value type="int">13</value>
++     <value type="int">14</value>
++    </valuelist>
++    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
++    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">DualSPHysics5.0CPU_linux64</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.DualSPHysics5.0CPU_linux64</value>
++    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">DualSPHysics5.0CPU_linux64</value>
++    <value type="QString" key="RunConfiguration.Arguments">./../../Tests/Gen/gen ./../../Tests/DSPH/
++</value>
++    <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
++    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
++    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
++    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
++    <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/Tests</value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux</value>
++   </valuemap>
++   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
++    <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.Events">
++     <value type="QString">cpu-cycles</value>
++    </valuelist>
++    <valuelist type="QVariantList" key="Analyzer.Perf.ExtraArguments"/>
++    <value type="int" key="Analyzer.Perf.Frequency">250</value>
++    <valuelist type="QVariantList" key="Analyzer.Perf.RecordArguments">
++     <value type="QString">-e</value>
++     <value type="QString">cpu-cycles</value>
++     <value type="QString">--call-graph</value>
++     <value type="QString">dwarf,4096</value>
++     <value type="QString">-F</value>
++     <value type="QString">250</value>
++    </valuelist>
++    <value type="QString" key="Analyzer.Perf.SampleMode">-F</value>
++    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
++    <value type="int" key="Analyzer.Perf.StackSize">4096</value>
++    <value type="bool" key="Analyzer.QmlProfiler.AggregateTraces">false</value>
++    <value type="bool" key="Analyzer.QmlProfiler.FlushEnabled">false</value>
++    <value type="uint" key="Analyzer.QmlProfiler.FlushInterval">1000</value>
++    <value type="QString" key="Analyzer.QmlProfiler.LastTraceFile"></value>
++    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.AddedSuppressionFiles"/>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectSystime">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableBranchSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableCacheSim">false</value>
++    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableEventToolTips">true</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.MinimumCostRatio">0.01</value>
++    <value type="double" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">10</value>
++    <value type="bool" key="Analyzer.Valgrind.FilterExternalIssues">true</value>
++    <value type="QString" key="Analyzer.Valgrind.KCachegrindExecutable">kcachegrind</value>
++    <value type="int" key="Analyzer.Valgrind.LeakCheckOnFinish">1</value>
++    <value type="int" key="Analyzer.Valgrind.NumCallers">25</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.RemovedSuppressionFiles"/>
++    <value type="int" key="Analyzer.Valgrind.SelfModifyingCodeDetection">1</value>
++    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
++    <value type="bool" key="Analyzer.Valgrind.ShowReachable">false</value>
++    <value type="bool" key="Analyzer.Valgrind.TrackOrigins">true</value>
++    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">valgrind</value>
++    <valuelist type="QVariantList" key="Analyzer.Valgrind.VisibleErrorKinds">
++     <value type="int">0</value>
++     <value type="int">1</value>
++     <value type="int">2</value>
++     <value type="int">3</value>
++     <value type="int">4</value>
++     <value type="int">5</value>
++     <value type="int">6</value>
++     <value type="int">7</value>
++     <value type="int">8</value>
++     <value type="int">9</value>
++     <value type="int">10</value>
++     <value type="int">11</value>
++     <value type="int">12</value>
++     <value type="int">13</value>
++     <value type="int">14</value>
++    </valuelist>
++    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
++    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">DualSPHysics5.0_linux64</value>
++    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.DualSPHysics5.0_linux64</value>
++    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">DualSPHysics5.0_linux64</value>
++    <value type="QString" key="RunConfiguration.Arguments"></value>
++    <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
++    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
++    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
++    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
++    <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
++    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
++    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/prashant/Documents/Git/ForkDSPH/DualSPHysics/bin/linux</value>
++   </valuemap>
++   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
++  </valuemap>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.TargetCount</variable>
++  <value type="int">2</value>
++ </data>
++ <data>
++  <variable>ProjectExplorer.Project.Updater.FileVersion</variable>
++  <value type="int">22</value>
++ </data>
++ <data>
++  <variable>Version</variable>
++  <value type="int">22</value>
++ </data>
++</qtcreator>
+diff --git a/src/source/FunSphKernel.h b/src/source/FunSphKernel.h
+index 980e63e..55361a6 100644
+--- a/src/source/FunSphKernel.h
++++ b/src/source/FunSphKernel.h
+@@ -201,7 +201,7 @@ inline StKWendlandCte GetKernelWendland_Ctes(bool sim2d,double h){
+   return(kc);
+ }
+ //============================================================================== 
+-/// Returns wab of kernel.
++/// Returns wab of kernel.   ///line 703
+ //==============================================================================
+ inline float GetKernelWendland_Wab(const StKWendlandCte &kc,float h,float rr2){
+   const float rad=sqrt(rr2);
+@@ -220,8 +220,20 @@ inline float GetKernelWendland_Fac(const StKWendlandCte &kc,float h,float rr2){
+   const float wqq1=1.f-0.5f*qq;
+   return(kc.bwen*qq*wqq1*wqq1*wqq1/rad);
+ }
+-//============================================================================== 
+-/// Returns wab and fac of kernel.
++
++//==============================================================================
++/// Returns fabc of kernel.
++//==============================================================================
++
++/*inline float GetKernelWendland_Fabc(const StKWendlandCte &kc,float h,float rr2){
++  const float rad=sqrt(rr2);
++  const float qq=rad/h;
++  const float wqq1=1.f-0.5f*qq;
++  return(kc.bwen*qq*wqq1*wqq1*wqq1/rad);
++}
++*/
++//==============================================================================
++/// Returns wab and fac/fabc of kernel.
+ //==============================================================================
+ inline float GetKernelWendland_WabFac(const StKWendlandCte &kc,float h,float rr2,float &fac){
+   const float rad=sqrt(rr2);
+diff --git a/src/source/JCellDivCpu.cpp b/src/source/JCellDivCpu.cpp
+index d4181e8..d0988af 100644
+--- a/src/source/JCellDivCpu.cpp
++++ b/src/source/JCellDivCpu.cpp
+@@ -119,6 +119,7 @@ void JCellDivCpu::SetMemoryVSort(byte *vsort){
+   VSortFloat=(float*)VSort;    VSortFloat3=(tfloat3*)VSort;
+   VSortFloat4=(tfloat4*)VSort; VSortDouble3=(tdouble3*)VSort;
+   VSortSymmatrix3f=(tsymatrix3f*)VSort;
++  VSortDouble=(double*)VSort;
+ }
+ 
+ //==============================================================================
+@@ -443,6 +444,19 @@ void JCellDivCpu::SortArray(tsymatrix3f *vec){
+   memcpy(vec+ini,VSortSymmatrix3f+ini,sizeof(tsymatrix3f)*(n-ini));
+ }
+ 
++//==============================================================================
++/// Reorder values of all particles (for type float).
++/// Reordena datos de todas las particulas (para tipo float).
++//==============================================================================
++void JCellDivCpu::SortArray(double *vec){
++  const int n=int(Nptot);
++  const int ini=(DivideFull? 0: int(NpbFinal));
++  #ifdef OMP_USE
++    #pragma omp parallel for schedule (static) if(n>OMP_LIMIT_COMPUTELIGHT)
++  #endif
++  for(int p=ini;p<n;p++)VSortDouble[p]=vec[SortPart[p]];
++  memcpy(vec+ini,VSortDouble+ini,sizeof(double)*(n-ini));
++}
+ //==============================================================================
+ /// Return current limites of domain.
+ /// Devuelve limites actuales del dominio.
+diff --git a/src/source/JCellDivCpu.h b/src/source/JCellDivCpu.h
+index 3ee149e..b08ab1f 100644
+--- a/src/source/JCellDivCpu.h
++++ b/src/source/JCellDivCpu.h
+@@ -89,6 +89,7 @@ protected:
+   tfloat4     *VSortFloat4;      ///<To order vectors tfloat4 (write to VSort). | Para ordenar vectores tfloat4 (apunta a VSort).
+   tdouble3    *VSortDouble3;     ///<To order vectors tdouble3 (write to VSort). | Para ordenar vectores tdouble3 (apunta a VSort).
+   tsymatrix3f *VSortSymmatrix3f; ///<To order vectors tsymatrix3f (write to VSort). | Para ordenar vectores tsymatrix3f (apunta a VSort).
++  double      *VSortDouble;       ///<To order vectors float (write to VSort). | Para ordenar vectores float (apunta a VSort).
+ 
+   llong MemAllocNp;  ///<Memory reserved for particles. | Mermoria reservada para particulas.
+   llong MemAllocNct; ///<Memory reserved for cells. | Mermoria reservada para celdas.
+@@ -166,8 +167,10 @@ public:
+   void SortArray(tdouble3 *vec);
+   void SortArray(tfloat3 *vec);
+   void SortArray(tfloat4 *vec);
++  void SortArray(double *vec);
+   void SortArray(tsymatrix3f *vec);
+ 
++
+   TpCellMode GetCellMode()const{ return(CellMode); }
+   int GetScellDiv()const{ return(ScellDiv); }
+   float GetScell()const{ return(Scell); }
+diff --git a/src/source/JDsPartsOut.cpp b/src/source/JDsPartsOut.cpp
+index e08bd52..f8fd1d8 100644
+--- a/src/source/JDsPartsOut.cpp
++++ b/src/source/JDsPartsOut.cpp
+@@ -67,6 +67,7 @@ void JDsPartsOut::AllocMemory(unsigned size,bool reset){
+     delete[] Pos;    Pos=NULL;
+     delete[] Vel;    Vel=NULL;
+     delete[] Rhop;   Rhop=NULL;
++    delete[] Temp;	 Temp=NULL;
+     delete[] Motive; Motive=NULL;
+   }
+   Size=unsigned((size+SizeUnit-1)/SizeUnit)*SizeUnit;
+@@ -78,6 +79,7 @@ void JDsPartsOut::AllocMemory(unsigned size,bool reset){
+       Pos   =fun::ResizeAlloc(Pos   ,Count,Size);  MemCpuParticles+=sizeof(tdouble3)*Size;
+       Vel   =fun::ResizeAlloc(Vel   ,Count,Size);  MemCpuParticles+=sizeof(tfloat3) *Size;
+       Rhop  =fun::ResizeAlloc(Rhop  ,Count,Size);  MemCpuParticles+=sizeof(float)   *Size;
++      Temp  =fun::ResizeAlloc(Temp  ,Count,Size);  MemCpuParticles+=sizeof(double)   *Size;
+       Motive=fun::ResizeAlloc(Motive,Count,Size);  MemCpuParticles+=sizeof(byte)    *Size;
+     }
+     catch(const std::bad_alloc){
+@@ -110,17 +112,32 @@ void JDsPartsOut::AddData(unsigned np,const typecode* code){
+ //==============================================================================
+ /// Adds out particles data.
+ //==============================================================================
+-void JDsPartsOut::AddParticles(unsigned np,const unsigned* idp,const tdouble3* pos
+-  ,const tfloat3* vel,const float* rhop,const typecode* code)
++void JDsPartsOut::AddParticles_11(unsigned np,const unsigned* idp,const tdouble3* pos
++  ,const tfloat3* vel,const float* rhop,const double* temp, const typecode* code)
+ {
+   if(Count+np>Size)AllocMemory(Count+np+SizeUnit,false);
+   memcpy(Idp +Count,idp ,sizeof(unsigned)*np);
+   memcpy(Pos +Count,pos ,sizeof(tdouble3)*np);
+   memcpy(Vel +Count,vel ,sizeof(tfloat3 )*np);
+   memcpy(Rhop+Count,rhop,sizeof(float   )*np);
++  memcpy(Temp+Count,temp,sizeof(double   )*np);
+   //-Adds motive information and updates numbers.
+   AddData(np,code);
+ }
+ 
+ 
++//==============================================================================
++/// Adds out particles data.
++//==============================================================================
++void JDsPartsOut::AddParticles(unsigned np,const unsigned* idp,const tdouble3* pos
++  ,const tfloat3* vel,const float* rhop, const typecode* code)
++{
++  if(Count+np>Size)AllocMemory(Count+np+SizeUnit,false);
++  memcpy(Idp +Count,idp ,sizeof(unsigned)*np);
++  memcpy(Pos +Count,pos ,sizeof(tdouble3)*np);
++  memcpy(Vel +Count,vel ,sizeof(tfloat3 )*np);
++  memcpy(Rhop+Count,rhop,sizeof(float   )*np);
++  //-Adds motive information and updates numbers.
++  AddData(np,code);
++}
+ 
+diff --git a/src/source/JDsPartsOut.h b/src/source/JDsPartsOut.h
+index 0353ee5..e0fdc63 100644
+--- a/src/source/JDsPartsOut.h
++++ b/src/source/JDsPartsOut.h
+@@ -57,6 +57,7 @@ protected:
+   tdouble3 *Pos;
+   tfloat3 *Vel;
+   float *Rhop;
++  double *Temp;
+   byte *Motive; ///<Motives for exclusion. 1:position, 2:rhop, 3:velocity.
+ 
+   unsigned MemAllocs;     ///<Number of allocations.
+@@ -74,6 +75,9 @@ public:
+   unsigned GetMemAllocs()const{ return(MemAllocs); }
+   llong GetAllocMemory()const{ return(MemCpuParticles); }
+ 
++  void AddParticles_11(unsigned np,const unsigned* idp,const tdouble3* pos
++    ,const tfloat3* vel,const float* rhop,const double* temp,const typecode* code);
++
+   void AddParticles(unsigned np,const unsigned* idp,const tdouble3* pos
+     ,const tfloat3* vel,const float* rhop,const typecode* code);
+ 
+diff --git a/src/source/JSph.cpp b/src/source/JSph.cpp
+index 5f86717..329fa50 100644
+--- a/src/source/JSph.cpp
++++ b/src/source/JSph.cpp
+@@ -269,6 +269,17 @@ void JSph::InitVars(){
+   DemDtForce=0;  //(DEM)
+   MaxNumbers.Clear();
+ 
++  //Initialisation of Temperature
++
++  HeatTransfer=false;
++  HeatCpFluid=0;
++  HeatCpBound=0;
++  HeatKFluid=0;
++  HeatTempBound=0;
++  HeatTempFluid=0;
++  MkConstTempWall=0;
++  DensityBound=0;
++
+   SaveFtAce=false;
+ }
+ 
+@@ -1149,6 +1160,24 @@ void JSph::LoadCaseConfig(const JSphCfgRun *cfg){
+     if(BoundCorr)   Run_Exceptioon("Symmetry is not allowed with BoundCor.");
+     if(TVisco!=VISCO_Artificial)Run_Exceptioon("Symmetry is only allowed with Artificial viscosity.");
+   } //<vs_syymmetry_end>
++  //Config OF Temp Variables
++
++  TiXmlNode* tempNode=xml.GetNode("case.execution.special.temperature", false);
++  if (tempNode) {
++      HeatTransfer=true;
++      MkConstTempWall = xml.ReadElementInt(tempNode->ToElement(), "boundary", "mkbound" );
++      TiXmlNode* tempBoundNode = xml.GetNode("case.execution.special.temperature.boundary", false);
++      HeatCpBound = xml.ReadElementFloat(tempBoundNode, "HeatCpBound", "value");
++      HeatKBound = xml.ReadElementFloat(tempBoundNode, "HeatKBound", "value");
++      HeatTempBound = xml.ReadElementFloat(tempBoundNode, "HeatTempBound", "value");
++      DensityBound = xml.ReadElementFloat(tempBoundNode, "DensityBound", "value");
++      TiXmlNode* tempFluidNode = xml.GetNode("case.execution.special.temperature.fluid", false);
++      HeatCpFluid = xml.ReadElementFloat(tempFluidNode, "HeatCpFluid", "value");
++      HeatKFluid = xml.ReadElementFloat(tempFluidNode, "HeatKFluid", "value");
++      HeatTempFluid = xml.ReadElementFloat(tempFluidNode, "HeatTempFluid", "value");
++  }
++
++
+ 
+   NpMinimum=CaseNp-unsigned(PartsOutMax*CaseNfluid);
+   Log->Print("**Basic case configuration is loaded");
+@@ -2279,8 +2308,19 @@ void JSph::ConfigSaveData(unsigned piece,unsigned pieces,std::string div){
+ /// Stores new excluded particles until recordering next PART.
+ /// Almacena nuevas particulas excluidas hasta la grabacion del proximo PART.
+ //==============================================================================
+-void JSph::AddParticlesOut(unsigned nout,const unsigned *idp,const tdouble3 *pos
+-  ,const tfloat3 *vel,const float *rhop,const typecode *code)
++void JSph::AddParticlesOut_11(unsigned nout, const unsigned *idp, const tdouble3 *pos
++  , const tfloat3 *vel, const float *rhop, const double *temp, const typecode *code)
++{
++  PartsOut->AddParticles_11(nout,idp,pos,vel,rhop,temp,code);
++}
++
++
++//==============================================================================
++/// Stores new excluded particles until recordering next PART.
++/// Almacena nuevas particulas excluidas hasta la grabacion del proximo PART.
++//==============================================================================
++void JSph::AddParticlesOut(unsigned nout, const unsigned *idp, const tdouble3 *pos
++  , const tfloat3 *vel, const float *rhop,  const typecode *code)
+ {
+   PartsOut->AddParticles(nout,idp,pos,vel,rhop,code);
+ }
+@@ -2394,7 +2434,7 @@ void JSph::AddBasicArrays(JDataArrays &arrays,unsigned np,const tdouble3 *pos
+ /// Graba los ficheros de datos de particulas.
+ //==============================================================================
+ void JSph::SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays
+-  ,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
++  ,const double *temp, unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
+ {
+   //-Stores particle data and/or information in bi4 format.
+   //-Graba datos de particulas y/o informacion en formato bi4.
+@@ -2448,6 +2488,9 @@ void JSph::SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays
+       const unsigned *idp =arrays.GetArrayUint   ("Idp");
+       const tfloat3  *vel =arrays.GetArrayFloat3 ("Vel");
+       const float    *rhop=arrays.GetArrayFloat  ("Rhop");
++
++      if(temp)DataBi4->AddPartData("Temp", npok, temp); //Temperature:Add Temperature Data.
++
+       if(SvPosDouble){
+         DataBi4->AddPartData(npok,idp,pos,vel,rhop);
+       }
+@@ -2525,7 +2568,7 @@ void JSph::SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays
+ /// Genera los ficheros de salida de datos.
+ //==============================================================================
+ void JSph::SaveData(unsigned npok,const JDataArrays& arrays
+-  ,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
++  ,const double*temp, unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus)
+ {
+   string suffixpartx=fun::PrintStr("_%04d",Part);
+ 
+@@ -2537,7 +2580,7 @@ void JSph::SaveData(unsigned npok,const JDataArrays& arrays
+   AddOutCount(noutpos,noutrhop,noutmove);
+ 
+   //-Stores data files of particles.
+-  SavePartData(npok,nout,arrays,ndom,vdom,infoplus);
++  SavePartData(npok,nout,arrays,temp, ndom,vdom,infoplus);
+ 
+   //-Reinitialises limits of dt. | Reinicia limites de dt.
+   PartDtMin=DBL_MAX; PartDtMax=-DBL_MAX;
+diff --git a/src/source/JSph.h b/src/source/JSph.h
+index ce31e20..bf2afa0 100644
+--- a/src/source/JSph.h
++++ b/src/source/JSph.h
+@@ -464,14 +464,15 @@ protected:
+   void PrintHeadPart();
+ 
+   void ConfigSaveData(unsigned piece,unsigned pieces,std::string div);
+-  void AddParticlesOut(unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop,const typecode *code);
++  void AddParticlesOut_11(unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop, const double *temp,const typecode *code);
++  void AddParticlesOut(unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop, const typecode *code);
+   void AbortBoundOut(JLog2 *log,unsigned nout,const unsigned *idp,const tdouble3 *pos,const tfloat3 *vel,const float *rhop,const typecode *code);
+ 
+   tfloat3* GetPointerDataFloat3(unsigned n,const tdouble3* v)const;
+   void AddBasicArrays(JDataArrays &arrays,unsigned np,const tdouble3 *pos
+     ,const unsigned *idp,const tfloat3 *vel,const float *rhop)const;
+-  void SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus);
+-  void SaveData(unsigned npok,const JDataArrays& arrays,unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus);
++  void SavePartData(unsigned npok,unsigned nout,const JDataArrays& arrays,const double *temp, unsigned ndom,const tdouble3 *vdom,const StInfoPartPlus *infoplus);
++  void SaveData(unsigned npok, const JDataArrays& arrays, const double *temp, unsigned ndom, const tdouble3 *vdom, const StInfoPartPlus *infoplus);
+   void CheckTermination();
+   void SaveDomainVtk(unsigned ndom,const tdouble3 *vdom)const;
+   void SaveInitialDomainVtk()const;
+@@ -490,6 +491,24 @@ protected:
+   unsigned GetOutRhopCount()const{ return(OutRhopCount); }
+   unsigned GetOutMoveCount()const{ return(OutMoveCount); }
+ 
++
++
++  //Temperature Configuration Variables
++
++  bool HeatTransfer; 	//Enable Heat transfer
++  float HeatCpFluid; 	//Specific Heat Capacity of fluid
++  float HeatCpBound; 	//Specific Heat Capacity of bound
++
++  float HeatKFluid;		//thermal Conductivity
++  float HeatKBound; 	//thermal Conductivity
++
++  float HeatTempBound;	//temp of bound in K
++  float HeatTempFluid; 	//temp of Fluid K
++
++  float DensityBound;
++  unsigned MkConstTempWall;	//mk of the constant Temperature of wall boundary
++
++
+ public:
+   JSph(bool cpu,bool mgpu,bool withmpi);
+   ~JSph();
+diff --git a/src/source/JSphCpu.cpp b/src/source/JSphCpu.cpp
+index 656d943..a974143 100644
+--- a/src/source/JSphCpu.cpp
++++ b/src/source/JSphCpu.cpp
+@@ -96,6 +96,15 @@ void JSphCpu::InitVars(){
+   FtRidp=NULL;
+   FtoForces=NULL;
+   FtoForcesRes=NULL;
++
++  //Initialisation Of temp Variables
++
++  Tempc = NULL;
++  TempM1c = NULL;
++  TempPrec = NULL;
++  Atempc = NULL;
++
++
+   FreeCpuMemoryParticles();
+   FreeCpuMemoryFixed();
+ }
+@@ -165,12 +174,20 @@ void JSphCpu::AllocCpuMemoryParticles(unsigned np,float over){
+   ArraysCpu->AddArrayCount(JArraysCpu::SIZE_12B,1); //-ace
+   ArraysCpu->AddArrayCount(JArraysCpu::SIZE_16B,2); //-velrhop,poscell
+   ArraysCpu->AddArrayCount(JArraysCpu::SIZE_24B,2); //-pos
++
++  //Temperautre AddArray for Tempc and Atempc Variable
++  ArraysCpu->AddArrayCount(JArraysCpu::SIZE_8B, 2); //Tempc
++  ArraysCpu->AddArrayCount(JArraysCpu::SIZE_4B, 1); //Atempc
++
++
+   if(TStep==STEP_Verlet){
+     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_16B,1); //-velrhopm1
++    ArraysCpu->AddArrayCount(JArraysCpu::SIZE_8B, 1); //Temperature TempM1
+   }
+   else if(TStep==STEP_Symplectic){
+     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_24B,1); //-pospre
+     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_16B,1); //-velrhoppre
++    ArraysCpu->AddArrayCount(JArraysCpu::SIZE_8B, 1); //Temperature  TempPrec
+   }
+   if(TVisco==VISCO_LaminarSPS){     
+     ArraysCpu->AddArrayCount(JArraysCpu::SIZE_24B,1); //-SpsTau,SpsGradvel
+@@ -208,6 +225,10 @@ void JSphCpu::ResizeCpuMemoryParticles(unsigned npnew){
+   tsymatrix3f *spstau     =SaveArrayCpu(Np,SpsTauc);
+   tfloat3     *boundnormal=SaveArrayCpu(Np,BoundNormalc); //<vs_mddbc>
+   tfloat3     *motionvel  =SaveArrayCpu(Np,MotionVelc);   //<vs_mddbc>
++  double	  *temp		  =SaveArrayCpu(Np,Tempc);
++  double	  *tempm1	  =SaveArrayCpu(Np,TempM1c);
++  double	  *temppre	  =SaveArrayCpu(Np,TempPrec);
++
+   //-Frees pointers.
+   ArraysCpu->Free(Idpc);
+   ArraysCpu->Free(Codec);
+@@ -288,7 +309,11 @@ void JSphCpu::ReserveBasicArraysCpu(){
+   Dcellc=ArraysCpu->ReserveUint();
+   Posc=ArraysCpu->ReserveDouble3();
+   Velrhopc=ArraysCpu->ReserveFloat4();
+-  if(TStep==STEP_Verlet)VelrhopM1c=ArraysCpu->ReserveFloat4();
++  Tempc = ArraysCpu->ReserveDouble();
++  if(TStep==STEP_Verlet){
++      VelrhopM1c=ArraysCpu->ReserveFloat4();
++      TempM1c=ArraysCpu->ReserveDouble();
++  }
+   if(TVisco==VISCO_LaminarSPS)SpsTauc=ArraysCpu->ReserveSymatrix3f();
+   if(UseNormals){ //<vs_mddbc_ini>
+     BoundNormalc=ArraysCpu->ReserveFloat3();
+@@ -329,7 +354,7 @@ void JSphCpu::PrintAllocMemory(llong mcpu)const{
+ /// - onlynormal: Solo se queda con las normales, elimina las particulas periodicas.
+ //==============================================================================
+ unsigned JSphCpu::GetParticlesData(unsigned n,unsigned pini,bool onlynormal
+-  ,unsigned *idp,tdouble3 *pos,tfloat3 *vel,float *rhop,typecode *code)
++  ,unsigned *idp,tdouble3 *pos,tfloat3 *vel,float *rhop,double *temp, typecode *code)
+ {
+   unsigned num=n;
+   //-Copy selected values.
+@@ -347,6 +372,8 @@ unsigned JSphCpu::GetParticlesData(unsigned n,unsigned pini,bool onlynormal
+     if(vel) for(unsigned p=0;p<n;p++){ tfloat4 vr=Velrhopc[p+pini]; vel[p]=TFloat3(vr.x,vr.y,vr.z); }
+     if(rhop)for(unsigned p=0;p<n;p++)rhop[p]=Velrhopc[p+pini].w;
+   }
++
++  if(temp)memcpy(temp, Tempc + pini, sizeof(double)*n); //temperature Copy Values From Tempc
+   //-Eliminate non-normal particles (periodic & others). | Elimina particulas no normales (periodicas y otras).
+   if(onlynormal){
+     if(!idp || !pos || !vel || !rhop)Run_Exceptioon("Pointers without data.");
+@@ -364,6 +391,7 @@ unsigned JSphCpu::GetParticlesData(unsigned n,unsigned pini,bool onlynormal
+         pos[pdel]  =pos[p];
+         vel[pdel]  =vel[p];
+         rhop[pdel] =rhop[p];
++        temp[pdel] = temp[p];	//Temperature
+         code2[pdel]=code2[p];
+       }
+       if(!normal)ndel++;
+@@ -425,7 +453,10 @@ void JSphCpu::ConfigRunMode(const JSphCfgRun *cfg,std::string preinfo){
+ void JSphCpu::InitRunCpu(){
+   InitRun(Np,Idpc,Posc);
+ 
+-  if(TStep==STEP_Verlet)memcpy(VelrhopM1c,Velrhopc,sizeof(tfloat4)*Np);
++  if(TStep==STEP_Verlet){
++      memcpy(VelrhopM1c,Velrhopc,sizeof(tfloat4)*Np);
++      memcpy(TempM1c, Tempc, sizeof(double)*Np);		//Temperature Copy TempM1c and Temc
++  }
+   if(TVisco==VISCO_LaminarSPS)memset(SpsTauc,0,sizeof(tsymatrix3f)*Np);
+   if(CaseNfloat)InitFloating();
+   if(MotionVelc)memset(MotionVelc,0,sizeof(tfloat3)*Np); //<vs_mddbc>
+@@ -441,6 +472,7 @@ void JSphCpu::PreInteractionVars_Forces(unsigned np,unsigned npb){
+   memset(Arc,0,sizeof(float)*np);                                    //Arc[]=0
+   if(Deltac)memset(Deltac,0,sizeof(float)*np);                       //Deltac[]=0
+   memset(Acec,0,sizeof(tfloat3)*np);                                 //Acec[]=(0,0,0)
++  memset(Atempc, 0, sizeof(float)*np);								 //temperature Atempc[]=0
+   if(SpsGradvelc)memset(SpsGradvelc+npb,0,sizeof(tsymatrix3f)*npf);  //SpsGradvelc[]=(0,0,0,0,0,0).
+ 
+   //-Select particles for shifting.
+@@ -468,6 +500,7 @@ void JSphCpu::PreInteraction_Forces(){
+   //-Assign memory.
+   Arc=ArraysCpu->ReserveFloat();
+   Acec=ArraysCpu->ReserveFloat3();
++  Atempc=ArraysCpu->ReserveFloat();	//temperature : Reserve Memo9ry for Atempc
+   if(DDTArray)Deltac=ArraysCpu->ReserveFloat();
+   if(Shifting)ShiftPosfsc=ArraysCpu->ReserveFloat4();
+   Pressc=ArraysCpu->ReserveFloat();
+@@ -545,6 +578,7 @@ void JSphCpu::PosInteraction_Forces(){
+   ArraysCpu->Free(ShiftPosfsc);  ShiftPosfsc=NULL;
+   ArraysCpu->Free(Pressc);       Pressc=NULL;
+   ArraysCpu->Free(SpsGradvelc);  SpsGradvelc=NULL;
++  ArraysCpu->Free(Atempc);		 Atempc=NULL;	//Temperature: free Atempc and reser the pointer to NULL
+ }
+ 
+ //==============================================================================
+@@ -553,8 +587,8 @@ void JSphCpu::PosInteraction_Forces(){
+ //==============================================================================
+ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
+   (unsigned n,unsigned pinit,StDivDataCpu divdata,const unsigned *dcell
+-  ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *idp
+-  ,float &viscdt,float *ar)const
++  ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *idp
++  ,float &viscdt,float *ar, float *atemp)const
+ {
+   //-Initialize viscth to calculate max viscdt with OpenMP. | Inicializa viscth para calcular visdt maximo con OpenMP.
+   float viscth[OMP_MAXTHREADS*OMP_STRIDE];
+@@ -566,12 +600,16 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
+   #endif
+   for(int p1=int(pinit);p1<pfin;p1++){
+     float visc=0,arp1=0;
++    float atempp1 = 0; //Temperature: initialise temp derivative to 0 for particle p1.
+ 
+     //-Load data of particle p1. | Carga datos de particula p1.
+     const tdouble3 posp1=pos[p1];
+     const bool rsymp1=(Symmetry && posp1.y<=KernelSize); //<vs_syymmetry>
+     const tfloat4 velrhop1=velrhop[p1];
+ 
++    const double tempp1 = temp[p1]; 	//Temperature: Load p1 temperature.
++    const float rhopp1 = DensityBound; 	//temperature: Load density for boundary.
++
+     //-Search for neighbours in adjacent cells.
+     const StNgSearch ngs=nsearch::Init(dcell[p1],false,divdata);
+     for(int z=ngs.zini;z<ngs.zfin;z++)for(int y=ngs.yini;y<ngs.yfin;y++){
+@@ -607,6 +645,14 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
+             const float dvx=velrhop1.x-velrhop2.x, dvy=velrhop1.y-velrhop2.y, dvz=velrhop1.z-velrhop2.z;
+             if(compute)arp1+=massp2*(dvx*frx+dvy*fry+dvz*frz)*(velrhop1.w/velrhop2.w);
+ 
++            //Temperature: compute temperature derivative
++            //===========================================
++
++            const double dtemp = tempp1 - temp[p2]; //Temperature: (dtemp= tempp1-tempp2)
++            const float tempConst = (4 * massp2*HeatKFluid*HeatKBound)/(HeatCpBound*rhopp1*velrhop[p2].w*(HeatKFluid + HeatKBound));
++            atempp1 += float(tempConst*dtemp*fac);
++            //===========================================
++
+             {//-Viscosity.
+               const float dot=drx*dvx + dry*dvy + drz*dvz;
+               const float dot_rr2=dot/(rr2+Eta2);
+@@ -638,9 +684,9 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+   void JSphCpu::InteractionForcesFluid(unsigned n,unsigned pinit,bool boundp2,float visco
+   ,StDivDataCpu divdata,const unsigned *dcell
+   ,const tsymatrix3f* tau,tsymatrix3f* gradvel
+-  ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *idp
++  ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *idp
+   ,const float *press 
+-  ,float &viscdt,float *ar,tfloat3 *ace,float *delta
++  ,float &viscdt,float *ar,tfloat3 *ace,float *atemp, float *delta
+   ,TpShifting shiftmode,tfloat4 *shiftposfs)const
+ {
+   //-Initialize viscth to calculate viscdt maximo con OpenMP. | Inicializa viscth para calcular visdt maximo con OpenMP.
+@@ -653,6 +699,7 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+   #endif
+   for(int p1=int(pinit);p1<pfin;p1++){
+     float visc=0,arp1=0,deltap1=0;
++    float atempp1 = 0.;
+     tfloat3 acep1=TFloat3(0);
+     tsymatrix3f gradvelp1={0,0,0,0,0,0};
+ 
+@@ -672,6 +719,7 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+     const tdouble3 posp1=pos[p1];
+     const tfloat3 velp1=TFloat3(velrhop[p1].x,velrhop[p1].y,velrhop[p1].z);
+     const float rhopp1=velrhop[p1].w;
++    const double tempp1 = temp[p1];	// Load temperature of particle p1
+     const float pressp1=press[p1];
+     const tsymatrix3f taup1=(tvisco==VISCO_Artificial? gradvelp1: tau[p1]);
+     const bool rsymp1=(Symmetry && posp1.y<=KernelSize); //<vs_syymmetry>
+@@ -725,6 +773,16 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+           const float dvx=velp1.x-velrhop2.x, dvy=velp1.y-velrhop2.y, dvz=velp1.z-velrhop2.z;
+           if(compute)arp1+=massp2*(dvx*frx+dvy*fry+dvz*frz)*(rhopp1/velrhop2.w);
+ 
++
++          //==========Temperature==========
++          //-Temperature: compute temerature derivative
++          float heatKp2 = (boundp2 ? HeatKBound : HeatKFluid); //Check if p2 is bound or fluid and assign the respective thermal conductivity K.
++          float rhopp2 = (boundp2 ? DensityBound : velrhop[p2].w); //Check if p2 is bound or fluid and assign the respective density.
++
++          const double dtemp = tempp1 - temp[p2]; //(dtemp = tempp1-tempp2
++          const float tempConst = (4 * massp2*HeatKFluid*heatKp2)/(HeatCpFluid*rhopp1*rhopp2*(HeatKFluid + heatKp2));
++          atempp1 += float(tempConst*dtemp*fac);
++
+           const float cbar=(float)Cs0;
+           //-Density Diffusion Term (Molteni and Colagrossi 2009).
+           if(tdensity==DDT_DDT && deltap1!=FLT_MAX){
+@@ -762,9 +820,14 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+             visc=max(dot_rr2,visc);
+             if(tvisco==VISCO_Artificial){//-Artificial viscosity.
+               if(dot<0){
++               float tempvisco = visco;
++               if(*temp<274.0){
++                   tempvisco=100.0;
++               }
+                 const float amubar=KernelH*dot_rr2;  //amubar=CTE.h*dot/(rr2+CTE.eta2);
+                 const float robar=(rhopp1+velrhop2.w)*0.5f;
+-                const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
++                //const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
++                const float pi_visc=(-tempvisco*cbar*amubar/robar)*massp2;
+                 acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
+               }
+             }
+@@ -809,7 +872,9 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+         else if(deltap1!=FLT_MAX)arp1+=deltap1;
+       }
+       ar[p1]+=arp1;
++      atemp[p1] += atempp1; //Temperature: Add atemp for particle p1.
+       ace[p1]=ace[p1]+acep1;
++
+       const int th=omp_get_thread_num();
+       if(visc>viscth[th*OMP_STRIDE])viscth[th*OMP_STRIDE]=visc;
+       if(tvisco==VISCO_LaminarSPS){
+@@ -970,12 +1035,12 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+   if(t.npf){
+     //-Interaction Fluid-Fluid.
+     InteractionForcesFluid<tker,ftmode,tvisco,tdensity,shift> (t.npf,t.npb,false,Visco                 
+-      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.code,t.idp,t.press
+-      ,viscdt,t.ar,t.ace,t.delta,t.shiftmode,t.shiftposfs);
++      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.temp, t.code,t.idp,t.press
++      ,viscdt,t.ar,t.ace,t.atemp,t.delta,t.shiftmode,t.shiftposfs);
+     //-Interaction Fluid-Bound.
+     InteractionForcesFluid<tker,ftmode,tvisco,tdensity,shift> (t.npf,t.npb,true ,Visco*ViscoBoundFactor
+-      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.code,t.idp,t.press
+-      ,viscdt,t.ar,t.ace,t.delta,t.shiftmode,t.shiftposfs);
++      ,t.divdata,t.dcell,t.spstau,t.spsgradvel,t.pos,t.velrhop,t.temp,t.code,t.idp,t.press
++      ,viscdt,t.ar,t.ace,t.atemp,t.delta,t.shiftmode,t.shiftposfs);
+ 
+     //-Interaction of DEM Floating-Bound & Floating-Floating. //(DEM)
+     if(UseDEM)InteractionForcesDEM(CaseNfloat,t.divdata,t.dcell
+@@ -987,7 +1052,7 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
+   if(t.npbok){
+     //-Interaction Bound-Fluid.
+     InteractionForcesBound<tker,ftmode> (t.npbok,0,t.divdata,t.dcell
+-      ,t.pos,t.velrhop,t.code,t.idp,viscdt,t.ar);
++      ,t.pos,t.velrhop,t.temp,t.code,t.idp,viscdt,t.ar, t.atemp);
+   }
+   res.viscdt=viscdt;
+ }
+@@ -1304,8 +1369,8 @@ void JSphCpu::UpdatePos(tdouble3 rpos,double movx,double movy,double movz
+ /// Calcula nuevos valores de posicion, velocidad y densidad para el fluido (usando Verlet).
+ //==============================================================================
+ void JSphCpu::ComputeVerletVarsFluid(bool shift,
+-  const tfloat4 *velrhop1,const tfloat4 *velrhop2,double dt,double dt2
+-  ,tdouble3 *pos,unsigned *dcell,typecode *code,tfloat4 *velrhopnew)const
++  const tfloat4 *velrhop1,const tfloat4 *velrhop2,const double *tempp2, double dt,double dt2
++  ,tdouble3 *pos,unsigned *dcell,typecode *code,tfloat4 *velrhopnew, double *tempnew)const
+ {
+   const double dt205=0.5*dt*dt;
+   const tdouble3 gravity=ToTDouble3(Gravity);
+@@ -1316,6 +1381,7 @@ void JSphCpu::ComputeVerletVarsFluid(bool shift,
+   for(int p=pini;p<pfin;p++){
+     //-Calculate density. | Calcula densidad.
+     const float rhopnew=float(double(velrhop2[p].w)+dt2*Arc[p]);
++    tempnew[p] = tempp2[p] + dt2*Atempc[p]; //Temperature: compute new temperature
+     if(!WithFloating || CODE_IsFluid(code[p])){//-Fluid Particles.
+       const tdouble3 acegr=ToTDouble3(Acec[p])+gravity; //-Adds gravity.
+       //-Calculate displacement. | Calcula desplazamiento.
+@@ -1360,7 +1426,7 @@ void JSphCpu::ComputeVerletVarsFluid(bool shift,
+ /// Calcula nuevos valores de densidad y pone velocidad a cero para el contorno 
+ /// (fixed+moving, no floating).
+ //==============================================================================
+-void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,double armul,tfloat4* velrhopnew)const{
++void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,const double* tempold, double armul,tfloat4* velrhopnew, double* tempnew)const{
+   const int npb=int(Npb);
+   #ifdef OMP_USE
+     #pragma omp parallel for schedule (static) if(npb>OMP_LIMIT_COMPUTESTEP)
+@@ -1368,6 +1434,7 @@ void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,double armul,tfloat4
+   for(int p=0;p<npb;p++){
+     const float rhopnew=float(double(velrhopold[p].w)+armul*Arc[p]);
+     velrhopnew[p]=TFloat4(0,0,0,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorved by boundary ones. | Evita q las boundary absorvan a las fluidas.
++    tempnew[p] = tempold[p]; //Temperature: constant temperature on boundaries for this implimentation.
+   }
+ }
+ 
+@@ -1381,16 +1448,17 @@ void JSphCpu::ComputeVerlet(double dt){
+   VerletStep++;
+   if(VerletStep<VerletSteps){
+     const double twodt=dt+dt;
+-    ComputeVerletVarsFluid(shift,Velrhopc,VelrhopM1c,dt,twodt,Posc,Dcellc,Codec,VelrhopM1c);
+-    ComputeVelrhopBound(VelrhopM1c,twodt,VelrhopM1c);
++    ComputeVerletVarsFluid(shift,Velrhopc,VelrhopM1c,Tempc, dt,twodt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
++    ComputeVelrhopBound(VelrhopM1c,Tempc, twodt,VelrhopM1c, TempM1c);
+   }
+   else{
+-    ComputeVerletVarsFluid(shift,Velrhopc,Velrhopc,dt,dt,Posc,Dcellc,Codec,VelrhopM1c);
+-    ComputeVelrhopBound(Velrhopc,dt,VelrhopM1c);
++    ComputeVerletVarsFluid(shift,Velrhopc,Velrhopc,Tempc, dt,dt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
++    ComputeVelrhopBound(Velrhopc,Tempc, dt,VelrhopM1c, TempM1c);
+     VerletStep=0;
+   }
+   //-New values are calculated en VelrhopM1c. | Los nuevos valores se calculan en VelrhopM1c.
+   swap(Velrhopc,VelrhopM1c);     //-Swap Velrhopc & VelrhopM1c. | Intercambia Velrhopc y VelrhopM1c.
++  swap(Tempc, TempM1c);
+   TmcStop(Timers,TMC_SuComputeStep);
+ }
+ 
+@@ -1404,9 +1472,11 @@ void JSphCpu::ComputeSymplecticPre(double dt){
+   //-Assign memory to variables Pre. | Asigna memoria a variables Pre.
+   PosPrec=ArraysCpu->ReserveDouble3();
+   VelrhopPrec=ArraysCpu->ReserveFloat4();
++  TempPrec = ArraysCpu->ReserveDouble();	//Temperature: reserve memory
+   //-Change data to variables Pre to calculate new data. | Cambia datos a variables Pre para calcular nuevos datos.
+   swap(PosPrec,Posc);         //Put value of Pos[] in PosPre[].         | Es decir... PosPre[] <= Pos[].
+   swap(VelrhopPrec,Velrhopc); //Put value of Velrhop[] in VelrhopPre[]. | Es decir... VelrhopPre[] <= Velrhop[].
++  swap(TempPrec, Tempc);	  //Temperature: constant temperature for the boundary
+   //-Calculate new values of particles. | Calcula nuevos datos de particulas.
+   const double dt05=dt*.5;
+   
+@@ -1418,6 +1488,7 @@ void JSphCpu::ComputeSymplecticPre(double dt){
+   for(int p=0;p<npb;p++){
+     const tfloat4 vr=VelrhopPrec[p];
+     const float rhopnew=float(double(vr.w)+dt05*Arc[p]);
++    Tempc[p]=TempPrec[p]+dt05*Atempc[p];	//Temperature: Calculate new temperature for the fluid
+     Velrhopc[p]=TFloat4(vr.x,vr.y,vr.z,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorbed by boundary ones. | Evita q las boundary absorvan a las fluidas.
+   }
+ 
+@@ -1485,6 +1556,13 @@ void JSphCpu::ComputeSymplecticCorr(double dt){
+   for(int p=0;p<npb;p++){
+     const double epsilon_rdot=(-double(Arc[p])/double(Velrhopc[p].w))*dt;
+     const float rhopnew=float(double(VelrhopPrec[p].w) * (2.-epsilon_rdot)/(2.+epsilon_rdot));
++
++    //========================================
++    //Temperature
++    const double epsilon_tdot=(-double(Atempc[p])/Tempc[p])*dt;
++    Tempc[p]=TempPrec[p]*(2.-epsilon_tdot)/(2.+epsilon_tdot);
++    //========================================
++
+     Velrhopc[p]=TFloat4(0,0,0,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorbed by boundary ones. | Evita q las boundary absorvan a las fluidas.
+   }
+ 
+@@ -1537,6 +1615,7 @@ void JSphCpu::ComputeSymplecticCorr(double dt){
+   //-Free memory assigned to variables Pre and ComputeSymplecticPre(). | Libera memoria asignada a variables Pre en ComputeSymplecticPre().
+   ArraysCpu->Free(PosPrec);      PosPrec=NULL;
+   ArraysCpu->Free(VelrhopPrec);  VelrhopPrec=NULL;
++  ArraysCpu->Free(TempPrec);	 TempPrec=NULL;		//Teperature: free memory
+   TmcStop(Timers,TMC_SuComputeStep);
+ }
+ 
+diff --git a/src/source/JSphCpu.h b/src/source/JSphCpu.h
+index c1b48ff..57dda19 100644
+--- a/src/source/JSphCpu.h
++++ b/src/source/JSphCpu.h
+@@ -35,11 +35,13 @@ typedef struct{
+   const unsigned *dcell;
+   const tdouble3 *pos;
+   const tfloat4 *velrhop;
++  const double *temp;
+   const unsigned *idp;
+   const typecode *code;
+   const float *press;
+   float* ar;
+   tfloat3 *ace;
++  float *atemp;
+   float *delta;
+   TpShifting shiftmode;
+   tfloat4 *shiftposfs;
+@@ -50,18 +52,18 @@ typedef struct{
+ ///Collects parameters for particle interaction on CPU.
+ inline stinterparmsc StInterparmsc(unsigned np,unsigned npb,unsigned npbok
+   ,StDivDataCpu divdata,const unsigned *dcell
+-  ,const tdouble3 *pos,const tfloat4 *velrhop,const unsigned *idp,const typecode *code
++  ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const unsigned *idp,const typecode *code
+   ,const float *press
+-  ,float* ar,tfloat3 *ace,float *delta
++  ,float* ar,tfloat3 *ace, float *atemp, float *delta
+   ,TpShifting shiftmode,tfloat4 *shiftposfs
+   ,tsymatrix3f *spstau,tsymatrix3f *spsgradvel
+ )
+ {
+   stinterparmsc d={np,npb,npbok,(np-npb)
+     ,divdata,dcell
+-    ,pos,velrhop,idp,code
++    ,pos,velrhop,temp,idp,code
+     ,press
+-    ,ar,ace,delta
++    ,ar,ace,atemp,delta
+     ,shiftmode,shiftposfs
+     ,spstau,spsgradvel
+   };
+@@ -122,16 +124,19 @@ protected:
+   unsigned *Dcellc;  ///<Cells inside DomCells coded with DomCellCode. | Celda dentro de DomCells codificada con DomCellCode.
+   tdouble3 *Posc;
+   tfloat4 *Velrhopc;
++  double *Tempc; 	/// Temperature for Each Particle
+ 
+   tfloat3 *BoundNormalc;  ///<Normal (x,y,z) pointing from boundary particles to ghost nodes.  //<vs_mddbc>
+   tfloat3 *MotionVelc;    ///<Velocity of a moving boundary particle.                          //<vs_mddbc>
+     
+   //-Variables for compute step: VERLET. | Vars. para compute step: VERLET.
+   tfloat4 *VelrhopM1c;  ///<Verlet: in order to keep previous values. | Verlet: para guardar valores anteriores.
++  double *TempM1c; 		/// Temperature array to keep previous Values for Verlet
+ 
+   //-Variables for compute step: SYMPLECTIC. | Vars. para compute step: SYMPLECTIC.
+   tdouble3 *PosPrec;    ///<Sympletic: in order to keep previous values. | Sympletic: para guardar valores en predictor.
+   tfloat4 *VelrhopPrec;
++  double *TempPrec; 		/// Temperature array to keep previous Values for Symplectic
+ 
+   //-Variables for floating bodies.
+   unsigned *FtRidp;             ///<Identifier to access to the particles of the floating object [CaseNfloat].
+@@ -141,6 +146,7 @@ protected:
+   //-Variables for computation of forces | Vars. para computo de fuerzas.
+   tfloat3 *Acec;         ///<Sum of interaction forces | Acumula fuerzas de interaccion
+   float *Arc; 
++  float *Atempc;		 /// Temperature Derivative
+   float *Deltac;         ///<Adjusted sum with Delta-SPH with DELTA_DynamicExt | Acumula ajuste de Delta-SPH con DELTA_DynamicExt
+ 
+   tfloat4 *ShiftPosfsc;    ///<Particle displacement and free surface detection for Shifting.
+@@ -195,8 +201,8 @@ protected:
+   llong GetAllocMemoryCpu()const;
+   void PrintAllocMemory(llong mcpu)const;
+ 
+-  unsigned GetParticlesData(unsigned n,unsigned pini,bool onlynormal
+-    ,unsigned *idp,tdouble3 *pos,tfloat3 *vel,float *rhop,typecode *code);
++  unsigned GetParticlesData(unsigned n, unsigned pini, bool onlynormal
++    , unsigned *idp, tdouble3 *pos, tfloat3 *vel, float *rhop, double *temp, typecode *code);
+   void ConfigOmp(const JSphCfgRun *cfg);
+ 
+   void ConfigRunMode(const JSphCfgRun *cfg,std::string preinfo="");
+@@ -213,16 +219,16 @@ protected:
+ 
+   template<TpKernel tker,TpFtMode ftmode> void InteractionForcesBound
+     (unsigned n,unsigned pini,StDivDataCpu divdata,const unsigned *dcell
+-    ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *id
+-    ,float &viscdt,float *ar)const;
++    ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *id
++    ,float &viscdt,float *ar ,float *atemp)const;
+ 
+   template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool shift> 
+     void InteractionForcesFluid(unsigned n,unsigned pini,bool boundp2,float visco
+     ,StDivDataCpu divdata,const unsigned *dcell
+     ,const tsymatrix3f* tau,tsymatrix3f* gradvel
+-    ,const tdouble3 *pos,const tfloat4 *velrhop,const typecode *code,const unsigned *idp
++    ,const tdouble3 *pos,const tfloat4 *velrhop,const double *temp, const typecode *code,const unsigned *idp
+     ,const float *press
+-    ,float &viscdt,float *ar,tfloat3 *ace,float *delta
++    ,float &viscdt,float *ar,tfloat3 *ace,float *atemp, float *delta
+     ,TpShifting shiftmode,tfloat4 *shiftposfs)const;
+ 
+   void InteractionForcesDEM(unsigned nfloat,StDivDataCpu divdata,const unsigned *dcell
+@@ -253,8 +259,8 @@ protected:
+ 
+   void ComputeSpsTau(unsigned n,unsigned pini,const tfloat4 *velrhop,const tsymatrix3f *gradvel,tsymatrix3f *tau)const;
+ 
+-  void ComputeVerletVarsFluid(bool shift,const tfloat4 *velrhop1,const tfloat4 *velrhop2,double dt,double dt2,tdouble3 *pos,unsigned *cell,typecode *code,tfloat4 *velrhopnew)const;
+-  void ComputeVelrhopBound(const tfloat4* velrhopold,double armul,tfloat4* velrhopnew)const;
++  void ComputeVerletVarsFluid(bool shift,const tfloat4 *velrhop1,const tfloat4 *velrhop2, const double *tempp2,double dt,double dt2,tdouble3 *pos,unsigned *cell,typecode *code,tfloat4 *velrhopnew, double *tempnew)const;
++  void ComputeVelrhopBound(const tfloat4* velrhopold, const double *tempold, double armul, tfloat4* velrhopnew, double *tempnew)const;
+ 
+   void ComputeVerlet(double dt);
+   void ComputeSymplecticPre(double dt);
+diff --git a/src/source/JSphCpuSingle.cpp b/src/source/JSphCpuSingle.cpp
+index f2f2394..e238f63 100644
+--- a/src/source/JSphCpuSingle.cpp
++++ b/src/source/JSphCpuSingle.cpp
+@@ -116,6 +116,14 @@ void JSphCpuSingle::ConfigDomain(){
+   memcpy(Idpc,PartsLoaded->GetIdp(),sizeof(unsigned)*Np);
+   memcpy(Velrhopc,PartsLoaded->GetVelRhop(),sizeof(tfloat4)*Np);
+ 
++  for(unsigned p =0; p<Np; p++) Tempc[p] =HeatTempFluid;
++  for(unsigned c =0; c<MkInfo->Size(); c++)  {
++      const JSphMkBlock* block =MkInfo->Mkblock(c);
++      if(block->Mk ==(MkConstTempWall + MkInfo->GetMkBoundFirst()))  {
++          for(unsigned p =block->Begin; p<block->Begin+block->Count; p++)
++              Tempc[p] =HeatTempBound;
++      }
++  }
+   //-Computes radius of floating bodies.
+   if(CaseNfloat && PeriActive!=0 && !PartBegin)CalcFloatingRadius(Np,Posc,Idpc);
+ 
+@@ -449,13 +457,16 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
+   CellDivSingle->SortArray(Dcellc);
+   CellDivSingle->SortArray(Posc);
+   CellDivSingle->SortArray(Velrhopc);
++  CellDivSingle->SortArray(Tempc); //Overloaded Function Sort Tempc Double Array
+   if(TStep==STEP_Verlet){
+     CellDivSingle->SortArray(VelrhopM1c);
++    CellDivSingle->SortArray(TempM1c);
+   }
+   else if(TStep==STEP_Symplectic && (PosPrec || VelrhopPrec)){//-In reality, this is only necessary in divide for corrector, not in predictor??? | En realidad solo es necesario en el divide del corrector, no en el predictor???
+     if(!PosPrec || !VelrhopPrec)Run_Exceptioon("Symplectic data is invalid.") ;
+     CellDivSingle->SortArray(PosPrec);
+     CellDivSingle->SortArray(VelrhopPrec);
++    CellDivSingle->SortArray(TempPrec);
+   }
+   if(TVisco==VISCO_LaminarSPS)CellDivSingle->SortArray(SpsTauc);
+   if(UseNormals){ //<vs_mddbc_ini>
+@@ -484,13 +495,15 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
+     tdouble3* pos=ArraysCpu->ReserveDouble3();
+     tfloat3* vel=ArraysCpu->ReserveFloat3();
+     float* rhop=ArraysCpu->ReserveFloat();
++    double* temp=ArraysCpu->ReserveDouble();
+     typecode* code=ArraysCpu->ReserveTypeCode();
+-    unsigned num=GetParticlesData(npfout,Np,false,idp,pos,vel,rhop,code);
+-    AddParticlesOut(npfout,idp,pos,vel,rhop,code);
++    unsigned num=GetParticlesData(npfout,Np,false,idp,pos,vel,rhop,temp,code);
++    AddParticlesOut_11(npfout,idp,pos,vel,rhop,temp,code);
+     ArraysCpu->Free(idp);
+     ArraysCpu->Free(pos);
+     ArraysCpu->Free(vel);
+     ArraysCpu->Free(rhop);
++    ArraysCpu->Free(temp);
+     ArraysCpu->Free(code);
+   }
+   TmcStop(Timers,TMC_NlOutCheck);
+@@ -508,8 +521,9 @@ void JSphCpuSingle::AbortBoundOut(){
+   tdouble3* pos=ArraysCpu->ReserveDouble3();
+   tfloat3* vel=ArraysCpu->ReserveFloat3();
+   float* rhop=ArraysCpu->ReserveFloat();
++  double *temp=ArraysCpu->ReserveDouble();
+   typecode* code=ArraysCpu->ReserveTypeCode();
+-  GetParticlesData(nboundout,Np,false,idp,pos,vel,rhop,code);
++  GetParticlesData(nboundout,Np,false,idp,pos,vel,rhop,temp,code);
+   //-Shows excluded particles information and aborts execution.
+   JSph::AbortBoundOut(Log,nboundout,idp,pos,vel,rhop,code);
+ }
+@@ -527,7 +541,7 @@ void JSphCpuSingle::Interaction_Forces(TpInterStep interstep){
+   //-Interaction of Fluid-Fluid/Bound & Bound-Fluid (forces and DEM). | Interaccion Fluid-Fluid/Bound & Bound-Fluid (forces and DEM).
+   const stinterparmsc parms=StInterparmsc(Np,Npb,NpbOk
+     ,DivData,Dcellc
+-    ,Posc,Velrhopc,Idpc,Codec,Pressc,Arc,Acec,Deltac
++    ,Posc,Velrhopc,Tempc, Idpc,Codec,Pressc,Arc, Acec,Atempc, Deltac
+     ,ShiftingMode,ShiftPosfsc
+     ,SpsTauc,SpsGradvelc
+   );
+@@ -1095,13 +1109,15 @@ void JSphCpuSingle::SaveData(){
+   tdouble3 *pos=NULL;
+   tfloat3 *vel=NULL;
+   float *rhop=NULL;
++  double *temp=NULL;	//Temperature: temporal array.
+   if(save){
+     //-Assign memory and collect particle values. | Asigna memoria y recupera datos de las particulas.
+     idp=ArraysCpu->ReserveUint();
+     pos=ArraysCpu->ReserveDouble3();
+     vel=ArraysCpu->ReserveFloat3();
+     rhop=ArraysCpu->ReserveFloat();
+-    unsigned npnormal=GetParticlesData(Np,0,PeriActive!=0,idp,pos,vel,rhop,NULL);
++    temp=ArraysCpu->ReserveDouble();	//Temperature: allocate memory.
++    unsigned npnormal=GetParticlesData(Np,0,PeriActive!=0,idp,pos,vel,rhop,temp,NULL); //Added Temperature: new temp param.
+     if(npnormal!=npsave)Run_Exceptioon("The number of particles is invalid.");
+   }
+   //-Gather additional information. | Reune informacion adicional.
+@@ -1125,12 +1141,13 @@ void JSphCpuSingle::SaveData(){
+   //-Stores particle data. | Graba datos de particulas.
+   JDataArrays arrays;
+   AddBasicArrays(arrays,npsave,pos,idp,vel,rhop);
+-  JSph::SaveData(npsave,arrays,1,vdom,&infoplus);
++  JSph::SaveData(npsave,arrays,temp,1,vdom,&infoplus); //Temperature: new temp param
+   //-Free auxiliary memory for particle data. | Libera memoria auxiliar para datos de particulas.
+   ArraysCpu->Free(idp);
+   ArraysCpu->Free(pos);
+   ArraysCpu->Free(vel);
+   ArraysCpu->Free(rhop);
++  ArraysCpu->Free(temp);	//Temperature: free memory.
+   if(UseNormals && SvNormals)SaveVtkNormals("normals/Normals.vtk",Part,npsave,Npb,Posc,Idpc,BoundNormalc); //<vs_mddbc>
+   TmcStop(Timers,TMC_SuSavePart);
+ }
+diff --git a/src/source/JSphGpuSingle.cpp b/src/source/JSphGpuSingle.cpp
+index d63c5aa..2fd62a9 100644
+--- a/src/source/JSphGpuSingle.cpp
++++ b/src/source/JSphGpuSingle.cpp
+@@ -889,7 +889,8 @@ void JSphGpuSingle::SaveData(){
+   //-Stores particle data. | Graba datos de particulas.
+   JDataArrays arrays;
+   AddBasicArrays(arrays,npsave,AuxPos,Idp,AuxVel,AuxRhop);
+-  JSph::SaveData(npsave,arrays,1,vdom,&infoplus);
++  const double temporaryCpu=1.0;				//Delete immidiately...only a placeholder for the CPU to run
++  JSph::SaveData(npsave,arrays,&temporaryCpu,1,vdom,&infoplus); //
+   if(UseNormals && SvNormals)SaveVtkNormalsGpu("normals/Normals.vtk",Part,npsave,Npb,Posxyg,Poszg,Idpg,BoundNormalg); //<vs_mddbc>
+   TmgStop(Timers,TMG_SuSavePart);
+ }

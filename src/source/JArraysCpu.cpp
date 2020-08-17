@@ -118,6 +118,7 @@ void JArraysCpuSize::FreePointer(void* pointer)const{
 void JArraysCpuSize::SetArrayCount(unsigned count){
   if(count>MAXPOINTERS)Run_Exceptioon("Number of requested arrays exceeds the maximum.");
   if(count<CountUsed)Run_Exceptioon("Unable to free arrays in use.");
+  //printf(count);
   if(ArraySize){
     if(Count<count){//-Genera nuevos arrays. //-Generates new arrays.
       for(unsigned c=Count;c<count;c++)Pointers[c]=AllocPointer(ArraySize);

@@ -89,7 +89,8 @@ protected:
   tfloat4     *VSortFloat4;      ///<To order vectors tfloat4 (write to VSort). | Para ordenar vectores tfloat4 (apunta a VSort).
   tdouble3    *VSortDouble3;     ///<To order vectors tdouble3 (write to VSort). | Para ordenar vectores tdouble3 (apunta a VSort).
   tsymatrix3f *VSortSymmatrix3f; ///<To order vectors tsymatrix3f (write to VSort). | Para ordenar vectores tsymatrix3f (apunta a VSort).
-  double      *VSortDouble;       ///<To order vectors float (write to VSort). | Para ordenar vectores float (apunta a VSort).
+  double      *VSortDouble;       ///<To order vectors double (write to VSort). | Para ordenar vectores idouble (apunta a VSort).
+
 
   llong MemAllocNp;  ///<Memory reserved for particles. | Mermoria reservada para particulas.
   llong MemAllocNct; ///<Memory reserved for cells. | Mermoria reservada para celdas.

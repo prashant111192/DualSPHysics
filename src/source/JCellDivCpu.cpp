@@ -445,8 +445,8 @@ void JCellDivCpu::SortArray(tsymatrix3f *vec){
 }
 
 //==============================================================================
-/// Reorder values of all particles (for type float).
-/// Reordena datos de todas las particulas (para tipo float).
+/// Reorder values of all particles (for type double).
+/// Reordena datos de todas las particulas (para tipo double).
 //==============================================================================
 void JCellDivCpu::SortArray(double *vec){
   const int n=int(Nptot);
