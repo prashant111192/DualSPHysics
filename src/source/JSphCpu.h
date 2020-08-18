@@ -35,13 +35,13 @@ typedef struct{
   const unsigned *dcell;
   const tdouble3 *pos;
   const tfloat4 *velrhop;
-  const double *temp;
+  const double *temp;		//Temperature
   const unsigned *idp;
   const typecode *code;
   const float *press;
   float* ar;
   tfloat3 *ace;
-  float *atemp;
+  float *atemp;  			//Temperature
   float *delta;
   TpShifting shiftmode;
   tfloat4 *shiftposfs;

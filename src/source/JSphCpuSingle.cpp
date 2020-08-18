@@ -116,6 +116,10 @@ void JSphCpuSingle::ConfigDomain(){
   memcpy(Idpc,PartsLoaded->GetIdp(),sizeof(unsigned)*Np);
   memcpy(Velrhopc,PartsLoaded->GetVelRhop(),sizeof(tfloat4)*Np);
 
+  //==================================================
+   // Temperature: assign initial temperature
+   //==================================================
+
   for(unsigned p =0; p<Np; p++) Tempc[p] =HeatTempFluid;
   for(unsigned c =0; c<MkInfo->Size(); c++)  {
       const JSphMkBlock* block =MkInfo->Mkblock(c);
@@ -271,7 +275,7 @@ void JSphCpuSingle::PeriodicDuplicatePos(unsigned pnew,unsigned pcopy,bool inver
 /// Este kernel vale para single-cpu y multi-cpu porque usa domposmin. 
 //==============================================================================
 void JSphCpuSingle::PeriodicDuplicateVerlet(unsigned np,unsigned pini,tuint3 cellmax,tdouble3 perinc,const unsigned *listp
-  ,unsigned *idp,typecode *code,unsigned *dcell,tdouble3 *pos,tfloat4 *velrhop,tsymatrix3f *spstau,tfloat4 *velrhopm1)const
+  ,unsigned *idp,typecode *code,unsigned *dcell,tdouble3 *pos,tfloat4 *velrhop, double *temp, tsymatrix3f *spstau,tfloat4 *velrhopm1, double *tempm1)const
 {
   const int n=int(np);
   #ifdef OMP_USE
@@ -288,6 +292,11 @@ void JSphCpuSingle::PeriodicDuplicateVerlet(unsigned np,unsigned pini,tuint3 cel
     code[pnew]=CODE_SetPeriodic(code[pcopy]);
     velrhop[pnew]=velrhop[pcopy];
     velrhopm1[pnew]=velrhopm1[pcopy];
+
+    //Temperature
+    temp[pnew] = temp[pcopy];
+    tempm1[pnew] = tempm1[pcopy];
+
     if(spstau)spstau[pnew]=spstau[pcopy];
   }
 }
@@ -302,7 +311,7 @@ void JSphCpuSingle::PeriodicDuplicateVerlet(unsigned np,unsigned pini,tuint3 cel
 /// Este kernel vale para single-cpu y multi-cpu porque usa domposmin. 
 //==============================================================================
 void JSphCpuSingle::PeriodicDuplicateSymplectic(unsigned np,unsigned pini,tuint3 cellmax,tdouble3 perinc,const unsigned *listp
-  ,unsigned *idp,typecode *code,unsigned *dcell,tdouble3 *pos,tfloat4 *velrhop,tsymatrix3f *spstau,tdouble3 *pospre,tfloat4 *velrhoppre)const
+  ,unsigned *idp,typecode *code,unsigned *dcell,tdouble3 *pos,tfloat4 *velrhop, double *temp, tsymatrix3f *spstau,tdouble3 *pospre,tfloat4 *velrhoppre, double *temppre)const
 {
   const int n=int(np);
   #ifdef OMP_USE
@@ -318,8 +327,13 @@ void JSphCpuSingle::PeriodicDuplicateSymplectic(unsigned np,unsigned pini,tuint3
     idp[pnew]=idp[pcopy];
     code[pnew]=CODE_SetPeriodic(code[pcopy]);
     velrhop[pnew]=velrhop[pcopy];
+
+    //Temperature
+    temp[pnew]=temp[pcopy];
     if(pospre)pospre[pnew]=pospre[pcopy];
     if(velrhoppre)velrhoppre[pnew]=velrhoppre[pcopy];
+    //Temperature
+    if(temppre)temppre[pnew]=temppre[pcopy];
     if(spstau)spstau[pnew]=spstau[pcopy];
   }
 }
@@ -415,10 +429,10 @@ void JSphCpuSingle::RunPeriodic(){
             run=false;
             //-Create new duplicate periodic particles in the list
             //-Crea nuevas particulas periodicas duplicando las particulas de la lista.
-            if(TStep==STEP_Verlet)PeriodicDuplicateVerlet(count,Np,DomCells,perinc,listp,Idpc,Codec,Dcellc,Posc,Velrhopc,SpsTauc,VelrhopM1c);
+            if(TStep==STEP_Verlet)PeriodicDuplicateVerlet(count,Np,DomCells,perinc,listp,Idpc,Codec,Dcellc,Posc,Velrhopc,Tempc,SpsTauc,VelrhopM1c,TempM1c);
             if(TStep==STEP_Symplectic){
               if((PosPrec || VelrhopPrec) && (!PosPrec || !VelrhopPrec))Run_Exceptioon("Symplectic data is invalid.") ;
-              PeriodicDuplicateSymplectic(count,Np,DomCells,perinc,listp,Idpc,Codec,Dcellc,Posc,Velrhopc,SpsTauc,PosPrec,VelrhopPrec);
+              PeriodicDuplicateSymplectic(count,Np,DomCells,perinc,listp,Idpc,Codec,Dcellc,Posc,Velrhopc,Tempc, SpsTauc,PosPrec,VelrhopPrec, TempPrec);
             }
             if(UseNormals)PeriodicDuplicateNormals(count,Np,DomCells,perinc,listp,BoundNormalc,MotionVelc); //<vs_mddbc>
 
@@ -497,6 +511,7 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
     float* rhop=ArraysCpu->ReserveFloat();
     double* temp=ArraysCpu->ReserveDouble();
     typecode* code=ArraysCpu->ReserveTypeCode();
+    //Temperature
     unsigned num=GetParticlesData(npfout,Np,false,idp,pos,vel,rhop,temp,code);
     //AddParticlesOut_11(npfout,idp,pos,vel,rhop,temp,code);
     AddParticlesOut(npfout,idp,pos,vel,rhop,code);
@@ -504,6 +519,7 @@ void JSphCpuSingle::RunCellDivide(bool updateperiodic){
     ArraysCpu->Free(pos);
     ArraysCpu->Free(vel);
     ArraysCpu->Free(rhop);
+    //Temperature
     ArraysCpu->Free(temp);
     ArraysCpu->Free(code);
   }

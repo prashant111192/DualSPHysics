@@ -45,10 +45,10 @@ protected:
   void ResizeParticlesSize(unsigned newsize,float oversize,bool updatedivide);
   unsigned PeriodicMakeList(unsigned np,unsigned pini,bool stable,unsigned nmax,tdouble3 perinc,const tdouble3 *pos,const typecode *code,unsigned *listp)const;
   void PeriodicDuplicatePos(unsigned pnew,unsigned pcopy,bool inverse,double dx,double dy,double dz,tuint3 cellmax,tdouble3 *pos,unsigned *dcell)const;
-  void PeriodicDuplicateVerlet(unsigned np,unsigned pini,tuint3 cellmax,tdouble3 perinc,const unsigned *listp
-    ,unsigned *idp,typecode *code,unsigned *dcell,tdouble3 *pos,tfloat4 *velrhop,tsymatrix3f *spstau,tfloat4 *velrhopm1)const;
-  void PeriodicDuplicateSymplectic(unsigned np,unsigned pini,tuint3 cellmax,tdouble3 perinc,const unsigned *listp
-    ,unsigned *idp,typecode *code,unsigned *dcell,tdouble3 *pos,tfloat4 *velrhop,tsymatrix3f *spstau,tdouble3 *pospre,tfloat4 *velrhoppre)const;
+  void PeriodicDuplicateVerlet(unsigned np, unsigned pini, tuint3 cellmax, tdouble3 perinc, const unsigned *listp
+    , unsigned *idp, typecode *code, unsigned *dcell, tdouble3 *pos, tfloat4 *velrhop, double *temp, tsymatrix3f *spstau, tfloat4 *velrhopm1, double *tempm1)const;
+  void PeriodicDuplicateSymplectic(unsigned np, unsigned pini, tuint3 cellmax, tdouble3 perinc, const unsigned *listp
+    , unsigned *idp, typecode *code, unsigned *dcell, tdouble3 *pos, tfloat4 *velrhop, double *temp, tsymatrix3f *spstau, tdouble3 *pospre, tfloat4 *velrhoppre, double *temppre)const;
   void PeriodicDuplicateNormals(unsigned np,unsigned pini,tuint3 cellmax              //<vs_mddbc>
     ,tdouble3 perinc,const unsigned *listp,tfloat3 *motionvel,tfloat3 *normals)const; //<vs_mddbc>
   void RunPeriodic();

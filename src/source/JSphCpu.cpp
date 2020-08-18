@@ -664,6 +664,7 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
 
             const double dtemp = tempp1 - temp[p2]; //Temperature: (dtemp= tempp1-tempp2)
             const float tempConst = (4 * massp2*HeatKFluid*HeatKBound)/(HeatCpBound*rhopp1*velrhop[p2].w*(HeatKFluid + HeatKBound));
+            //they do have fac returned
             atempp1 += float(tempConst*dtemp*fac);
             //===========================================
 
@@ -682,6 +683,7 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
     //-Sum results together. | Almacena resultados.
     if(arp1||visc){
       ar[p1]+=arp1;
+      atemp[p1] += atempp1; // Temperature: sum partial temperature.
       const int th=omp_get_thread_num();
       if(visc>viscth[th*OMP_STRIDE])viscth[th*OMP_STRIDE]=visc;
     }
@@ -795,7 +797,8 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
 
           const double dtemp = tempp1 - temp[p2]; //(dtemp = tempp1-tempp2
           const float tempConst = (4 * massp2*HeatKFluid*heatKp2)/(HeatCpFluid*rhopp1*rhopp2*(HeatKFluid + heatKp2));
-          atempp1 += float(tempConst*dtemp*fac);
+           const float fabc = frx / drx;				//WHY TEMP FABC
+          atempp1 += float(tempConst*dtemp*fabc);
 
           const float cbar=(float)Cs0;
           //-Density Diffusion Term (Molteni and Colagrossi 2009).
@@ -1397,6 +1400,7 @@ void JSphCpu::ComputeVerletVarsFluid(bool shift,
     //-Calculate density. | Calcula densidad.
     const float rhopnew=float(double(velrhop2[p].w)+dt2*Arc[p]);
     tempnew[p] = tempp2[p] + dt2*Atempc[p]; //Temperature: compute new temperature
+
     if(!WithFloating || CODE_IsFluid(code[p])){//-Fluid Particles.
       const tdouble3 acegr=ToTDouble3(Acec[p])+gravity; //-Adds gravity.
       //-Calculate displacement. | Calcula desplazamiento.
@@ -1449,6 +1453,7 @@ void JSphCpu::ComputeVelrhopBound(const tfloat4* velrhopold,const double* tempol
   for(int p=0;p<npb;p++){
     const float rhopnew=float(double(velrhopold[p].w)+armul*Arc[p]);
     velrhopnew[p]=TFloat4(0,0,0,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorved by boundary ones. | Evita q las boundary absorvan a las fluidas.
+
     tempnew[p] = tempold[p]; //Temperature: constant temperature on boundaries for this implimentation.
   }
 }
@@ -1463,8 +1468,8 @@ void JSphCpu::ComputeVerlet(double dt){
   VerletStep++;
   if(VerletStep<VerletSteps){
     const double twodt=dt+dt;
-    ComputeVerletVarsFluid(shift,Velrhopc,VelrhopM1c,Tempc, dt,twodt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
-    ComputeVelrhopBound(VelrhopM1c,Tempc, twodt,VelrhopM1c, TempM1c);
+    ComputeVerletVarsFluid(shift,Velrhopc,VelrhopM1c,TempM1c, dt,twodt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
+    ComputeVelrhopBound(VelrhopM1c,TempM1c, twodt,VelrhopM1c, TempM1c);
   }
   else{
     ComputeVerletVarsFluid(shift,Velrhopc,Velrhopc,Tempc, dt,dt,Posc,Dcellc,Codec,VelrhopM1c, TempM1c);
@@ -1473,7 +1478,7 @@ void JSphCpu::ComputeVerlet(double dt){
   }
   //-New values are calculated en VelrhopM1c. | Los nuevos valores se calculan en VelrhopM1c.
   swap(Velrhopc,VelrhopM1c);     //-Swap Velrhopc & VelrhopM1c. | Intercambia Velrhopc y VelrhopM1c.
-  swap(Tempc, TempM1c);
+  swap(Tempc, TempM1c);			 //temperature Swap tempc and tempm1c
   TmcStop(Timers,TMC_SuComputeStep);
 }
 
@@ -1488,10 +1493,12 @@ void JSphCpu::ComputeSymplecticPre(double dt){
   PosPrec=ArraysCpu->ReserveDouble3();
   VelrhopPrec=ArraysCpu->ReserveFloat4();
   TempPrec = ArraysCpu->ReserveDouble();	//Temperature: reserve memory
+
   //-Change data to variables Pre to calculate new data. | Cambia datos a variables Pre para calcular nuevos datos.
   swap(PosPrec,Posc);         //Put value of Pos[] in PosPre[].         | Es decir... PosPre[] <= Pos[].
   swap(VelrhopPrec,Velrhopc); //Put value of Velrhop[] in VelrhopPre[]. | Es decir... VelrhopPre[] <= Velrhop[].
   swap(TempPrec, Tempc);	  //Temperature: constant temperature for the boundary
+
   //-Calculate new values of particles. | Calcula nuevos datos de particulas.
   const double dt05=dt*.5;
   
@@ -1503,7 +1510,9 @@ void JSphCpu::ComputeSymplecticPre(double dt){
   for(int p=0;p<npb;p++){
     const tfloat4 vr=VelrhopPrec[p];
     const float rhopnew=float(double(vr.w)+dt05*Arc[p]);
-    Tempc[p]=TempPrec[p]+dt05*Atempc[p];	//Temperature: Calculate new temperature for the fluid
+    //Tempc[p]=TempPrec[p]+dt05*Atempc[p];	//Temperature: Calculate new temperature for the fluid
+    Tempc[p]=TempPrec[p];	//Temperature: Calculate new temperature for the fluid
+
     Velrhopc[p]=TFloat4(vr.x,vr.y,vr.z,(rhopnew<RhopZero? RhopZero: rhopnew));//-Avoid fluid particles being absorbed by boundary ones. | Evita q las boundary absorvan a las fluidas.
   }
 
@@ -1515,6 +1524,8 @@ void JSphCpu::ComputeSymplecticPre(double dt){
   for(int p=npb;p<np;p++){
     //-Calculate density.
     const float rhopnew=float(double(VelrhopPrec[p].w)+dt05*Arc[p]);
+    Tempc[p]=TempPrec[p]+dt05*Atempc[p];  //Temperature: Calculate new temperature for the fluid
+
     if(!WithFloating || CODE_IsFluid(Codec[p])){//-Fluid Particles.
       //-Calculate displacement. | Calcula desplazamiento.
       double dx=double(VelrhopPrec[p].x)*dt05;
