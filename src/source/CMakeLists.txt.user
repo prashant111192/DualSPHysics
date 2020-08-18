@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.4, 2020-08-18T14:19:29. -->
+<!-- Written by QtCreator 4.12.4, 2020-08-18T16:02:51. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -335,7 +335,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">DualSPHysics5.0CPU_linux64</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.DualSPHysics5.0CPU_linux64</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">DualSPHysics5.0CPU_linux64</value>
-    <value type="QString" key="RunConfiguration.Arguments">-ompthreads:1 ./../../Tests/Gen/gen ./../../Tests/DSPH1/
+    <value type="QString" key="RunConfiguration.Arguments">-ompthreads:0 ./../../Tests/Gen/gen ./../../Tests/DSPH1/
 </value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

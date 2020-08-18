@@ -668,6 +668,7 @@ template<TpKernel tker,TpFtMode ftmode> void JSphCpu::InteractionForcesBound
             atempp1 += float(tempConst*dtemp*fac);
             //===========================================
 
+            int delnow =1;
             {//-Viscosity.
               const float dot=drx*dvx + dry*dvy + drz*dvz;
               const float dot_rr2=dot/(rr2+Eta2);
@@ -715,7 +716,7 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
   #endif
   for(int p1=int(pinit);p1<pfin;p1++){
     float visc=0,arp1=0,deltap1=0;
-    float atempp1 = 0.;
+    float atempp1 = 0.;			//Temperature
     tfloat3 acep1=TFloat3(0);
     tsymatrix3f gradvelp1={0,0,0,0,0,0};
 
@@ -735,6 +736,7 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
     const tdouble3 posp1=pos[p1];
     const tfloat3 velp1=TFloat3(velrhop[p1].x,velrhop[p1].y,velrhop[p1].z);
     const float rhopp1=velrhop[p1].w;
+   //temperature
     const double tempp1 = temp[p1];	// Load temperature of particle p1
     const float pressp1=press[p1];
     const tsymatrix3f taup1=(tvisco==VISCO_Artificial? gradvelp1: tau[p1]);
@@ -792,13 +794,17 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
 
           //==========Temperature==========
           //-Temperature: compute temerature derivative
+          //if (compute)
+          //{
           float heatKp2 = (boundp2 ? HeatKBound : HeatKFluid); //Check if p2 is bound or fluid and assign the respective thermal conductivity K.
           float rhopp2 = (boundp2 ? DensityBound : velrhop[p2].w); //Check if p2 is bound or fluid and assign the respective density.
 
           const double dtemp = tempp1 - temp[p2]; //(dtemp = tempp1-tempp2
           const float tempConst = (4 * massp2*HeatKFluid*heatKp2)/(HeatCpFluid*rhopp1*rhopp2*(HeatKFluid + heatKp2));
-           const float fabc = frx / drx;				//WHY TEMP FABC
-          atempp1 += float(tempConst*dtemp*fabc);
+          //const float xabc = frx / drx;				//WHY TEMP FABC
+          //atempp1 += float(tempConst*dtemp*xabc);
+          atempp1 += float(tempConst*dtemp*fac);
+          //}
 
           const float cbar=(float)Cs0;
           //-Density Diffusion Term (Molteni and Colagrossi 2009).
