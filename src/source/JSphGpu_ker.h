@@ -72,6 +72,16 @@ typedef struct{
   double domposminx,domposminy,domposminz;
   //-Ctes. of Cubic Spline kernel.
   float cubic_a1,cubic_a2,cubic_aa,cubic_a24,cubic_c1,cubic_d1,cubic_c2,cubic_odwdeltap;
+
+/*
+  //Temperature : Constants
+  float HeatCpFluid;
+  float HeatCpBound;
+  float HeatKFluid;
+  float HeatKBound;
+  float DensityBound;
+  */
+
 }StCteInteraction; 
 
 /// Structure to collect kernel information.
