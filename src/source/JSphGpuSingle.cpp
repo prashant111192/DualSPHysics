@@ -150,6 +150,23 @@ void JSphGpuSingle::ConfigDomain(){
   memcpy(Idp,PartsLoaded->GetIdp(),sizeof(unsigned)*Np);
   memcpy(Velrhop,PartsLoaded->GetVelRhop(),sizeof(tfloat4)*Np);
 
+  //Teperature Prashant
+  //Temperature Assign Initial temperature
+  /*
+  for (unigned p=0; p<Np; p++){
+    Temp[p] = HeatTempFluid;
+  }
+
+  for (unsigned c = 0; c<MkInfo->Size(); c++){
+    const JSphMkBlock* block = MkInfo->Mkblock(c);
+    if (block->Mk ==(MkConstTempWall + MkInfo-> GetMkBoundFirst())){
+        for (unisgned p = block->Begin; p<block->Begin + block->Count; p++){
+            Temp[p] = HeatTempBound;
+        }
+     }
+  }
+  */
+
   //-Computes radius of floating bodies.
   if(CaseNfloat && PeriActive!=0 && !PartBegin)CalcFloatingRadius(Np,AuxPos,Idp);
 
@@ -345,18 +362,30 @@ void JSphGpuSingle::RunCellDivide(bool updateperiodic){
     double2*  posxyg=ArraysGpu->ReserveDouble2();
     double*   poszg=ArraysGpu->ReserveDouble();
     float4*   velrhopg=ArraysGpu->ReserveFloat4();
+    //Temperature Prashant
+    //double*	tempg=ArraysGpu->ReserveDouble();
     CellDivSingle->SortBasicArrays(Idpg,Codeg,Dcellg,Posxyg,Poszg,Velrhopg,idpg,codeg,dcellg,posxyg,poszg,velrhopg);
+    //Temperature Prashant
+    //CellDivSingle->SortDataArrays(Tempg,tempg);
     swap(Idpg,idpg);           ArraysGpu->Free(idpg);
     swap(Codeg,codeg);         ArraysGpu->Free(codeg);
     swap(Dcellg,dcellg);       ArraysGpu->Free(dcellg);
     swap(Posxyg,posxyg);       ArraysGpu->Free(posxyg);
     swap(Poszg,poszg);         ArraysGpu->Free(poszg);
     swap(Velrhopg,velrhopg);   ArraysGpu->Free(velrhopg);
+    //Temperature Prashant
+    //swap(Tempg,tempg);   ArraysGpu->Free(tempg);
   }
   if(TStep==STEP_Verlet){
     float4* velrhopg=ArraysGpu->ReserveFloat4();
     CellDivSingle->SortDataArrays(VelrhopM1g,velrhopg);
     swap(VelrhopM1g,velrhopg);   ArraysGpu->Free(velrhopg);
+    //Temperature Prashant Sort Array TempPreg
+    /*
+    CellDivSingle->SortDataArrays(TempM1g,tempg);
+    swap(TempM1g,tempg);   ArraysGpu->Free(tempg);
+    ArraysGpu->Free(tempg);
+    */
   }
   else if(TStep==STEP_Symplectic && (PosxyPreg || PoszPreg || VelrhopPreg)){ //-In reality, only necessary in the corrector not the predictor step??? | En realidad solo es necesario en el divide del corrector, no en el predictor??? 
     if(!PosxyPreg || !PoszPreg || !VelrhopPreg)Run_Exceptioon("Symplectic data is invalid.") ;

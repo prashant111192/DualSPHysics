@@ -653,8 +653,12 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
   __global__ void KerInteractionForcesFluid(unsigned n,unsigned pinit,float viscob,float viscof
   ,int scelldiv,int4 nc,int3 cellzero,const int2 *begincell,unsigned cellfluid,const unsigned *dcell
   ,const float *ftomassp,const float2 *tauff,float2 *gradvelff
-  ,const float4 *poscell,const float4 *velrhop,const typecode *code,const unsigned *idp
-  ,float *viscdt,float *ar,float3 *ace,float *delta
+  ,const float4 *poscell,const float4 *velrhop
+  //,cosnt double *temp		//Temperature Prashant
+  ,const typecode *code,const unsigned *idp
+  ,float *viscdt,float *ar
+  //,float *atemp				//temperature Prashant
+  ,float3 *ace,float *delta
   ,TpShifting shiftmode,float4 *shiftposfs)
 {
   const unsigned p=blockIdx.x*blockDim.x + threadIdx.x; //-Number of particle.

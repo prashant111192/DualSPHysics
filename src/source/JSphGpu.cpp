@@ -58,7 +58,9 @@ using namespace std;
 JSphGpu::JSphGpu(bool withmpi):JSph(false,false,withmpi),DivAxis(MGDIV_None){
   ClassName="JSphGpu";
   Idp=NULL; Code=NULL; Dcell=NULL; Posxy=NULL; Posz=NULL; Velrhop=NULL;
+  //Temp=NULL; //Temperature Prashant
   AuxPos=NULL; AuxVel=NULL; AuxRhop=NULL;
+  //AuxTemp=NULL; //Temperature Prahsant
   CellDiv=NULL;
   FtoAuxDouble6=NULL; FtoAuxFloat9=NULL; //-Calculates forces on floating bodies.
   ArraysGpu=new JArraysGpu;
@@ -153,6 +155,14 @@ void JSphGpu::InitVars(){
   FtoExtForcesg=NULL;                                                             //-Calculates forces on floating bodies.
   FtoCenterg=NULL; FtoAnglesg=NULL; FtoVelg=NULL; FtoOmegag=NULL;//-Management of floating bodies.
   FtoInertiaini8g=NULL; FtoInertiaini1g=NULL;//-Management of floating bodies.
+
+
+  //Teperature Prashant
+  /*Tempg=NULL;
+  TempM1g=NULL;
+  TempPreg=NULL;
+  Atempg=NULL;
+   */
   FtObjsOutdated=true;
   DemDatag=NULL; //(DEM)
   GpuParticlesAllocs=0;
@@ -286,9 +296,13 @@ void JSphGpu::AllocCpuMemoryParticles(unsigned np){
       Posxy=new tdouble2[np];    MemCpuParticles+=sizeof(tdouble2)*np;
       Posz=new double[np];       MemCpuParticles+=sizeof(double)*np;
       Velrhop=new tfloat4[np];   MemCpuParticles+=sizeof(tfloat4)*np;
-      AuxPos=new tdouble3[np];   MemCpuParticles+=sizeof(tdouble3)*np; 
+      //Temperature Prashant
+      //Temp=new double[np];   MemCpuParticles+=sizeof(double)*np;
+      AuxPos=new tdouble3[np];   MemCpuParticles+=sizeof(tdouble3)*np;
       AuxVel=new tfloat3[np];    MemCpuParticles+=sizeof(tfloat3)*np;
       AuxRhop=new float[np];     MemCpuParticles+=sizeof(float)*np;
+      //Temperature Prashant
+      //TempAux=new double[np];     MemCpuParticles+=sizeof(double)*np;
     }
     catch(const std::bad_alloc){
       Run_Exceptioon(fun::PrintStr("Could not allocate the requested memory (np=%u).",np));
@@ -329,12 +343,19 @@ void JSphGpu::AllocGpuMemoryParticles(unsigned np,float over){
   ArraysGpu->AddArrayCount(JArraysGpu::SIZE_12B,1); //-ace
   ArraysGpu->AddArrayCount(JArraysGpu::SIZE_16B,5); //-velrhop,posxy,poscell
   ArraysGpu->AddArrayCount(JArraysGpu::SIZE_8B,2);  //-posz
+  /*
+   // Temperature Prashant
+  ArraysGpu->AddArrayCount(JArraysGpu::SIZE_16B,2);		//Tempg
+  ArraysGpu->AddArrayCount(JArraysGpu::SIZE_8B,1);		//Atempg
+   */
   if(TStep==STEP_Verlet){
     ArraysGpu->AddArrayCount(JArraysGpu::SIZE_16B,1); //-velrhopm1
+    //ArraysGpu->AddArrayCount(JArraysGpu::SIZE_8B,1); //-Temperature Prashant :TempM1
   }
   else if(TStep==STEP_Symplectic){
     ArraysGpu->AddArrayCount(JArraysGpu::SIZE_8B,1);  //-poszpre
     ArraysGpu->AddArrayCount(JArraysGpu::SIZE_16B,2); //-posxypre,velrhoppre
+    //ArraysGpu->AddArrayCount(JArraysGpu::SIZE_8B,1); //-Temperature Prashant :TempPrec
   }
   if(TVisco==VISCO_LaminarSPS){     
     ArraysGpu->AddArrayCount(JArraysGpu::SIZE_24B,2); //-SpsTau,SpsGradvel
@@ -471,7 +492,13 @@ void JSphGpu::ReserveBasicArraysGpu(){
   Poszg=ArraysGpu->ReserveDouble();
   PosCellg=ArraysGpu->ReserveFloat4();
   Velrhopg=ArraysGpu->ReserveFloat4();
-  if(TStep==STEP_Verlet)VelrhopM1g=ArraysGpu->ReserveFloat4();
+  //Temperature Prashant
+  //Tempg=ArraysGpu->ReserveDouble();
+  if(TStep==STEP_Verlet){
+      VelrhopM1g=ArraysGpu->ReserveFloat4();
+      //Temperature Prashant
+      //TempM1g=ArraysGpu->ReserveDouble();
+  }
   if(TVisco==VISCO_LaminarSPS)SpsTaug=ArraysGpu->ReserveSymatrix3f();
   if(UseNormals){ //<vs_mddbc_ini>
     BoundNormalg=ArraysGpu->ReserveFloat3();
@@ -530,6 +557,15 @@ void JSphGpu::ConstantDataUp(){
   ctes.kernelh=KernelH;
   ctes.kernelsize2=KernelSize2; 
   ctes.poscellsize=PosCellSize; 
+  //Temperature Prashant Copy Constants To GPU
+  /*
+  ctes.HeatCpFluid=HeatCpFluid;
+  ctes.HeatCpBound=HeatCpBound;
+  ctes.HeatKFluid=HeatKFluid;
+  ctes.HeatKBound=HeatKBound;
+  ctes.DensityBound=DensityBound;
+  */
+
   //-Wendland constants are always computed since this kernel is used in some parts where other kernels are not defined (e.g. mDBC, inlet/outlet, boundcorr...).
   ctes.awen=KWend.awen; ctes.bwen=KWend.bwen;
   //-Copies constants for other kernels.
@@ -594,6 +630,8 @@ unsigned JSphGpu::ParticlesDataDown(unsigned n,unsigned pini,bool code,bool only
   cudaMemcpy(Posxy  ,Posxyg  +pini,sizeof(double2) *n,cudaMemcpyDeviceToHost);
   cudaMemcpy(Posz   ,Poszg   +pini,sizeof(double)  *n,cudaMemcpyDeviceToHost);
   cudaMemcpy(Velrhop,Velrhopg+pini,sizeof(float4)  *n,cudaMemcpyDeviceToHost);
+  //Temperature Prashant
+  //cudaMemcpy(Temp,Tempg+pini,sizeof(double)  *n,cudaMemcpyDeviceToHost);
   if(code || onlynormal)cudaMemcpy(Code,Codeg+pini,sizeof(typecode)*n,cudaMemcpyDeviceToHost);
   Check_CudaErroor("Failed copying data from GPU.");
   //-Eliminates abnormal particles (periodic and others). | Elimina particulas no normales (periodicas y otras).
@@ -838,7 +876,11 @@ void JSphGpu::InitRunGpu(){
   ParticlesDataDown(Np,0,false,false);
   InitRun(Np,Idp,AuxPos);
 
-  if(TStep==STEP_Verlet)cudaMemcpy(VelrhopM1g,Velrhopg,sizeof(float4)*Np,cudaMemcpyDeviceToDevice);
+  if(TStep==STEP_Verlet){
+      cudaMemcpy(VelrhopM1g,Velrhopg,sizeof(float4)*Np,cudaMemcpyDeviceToDevice);
+      //Temperature Prashant
+      //cudaMemcpy(TempM1g,Tempg,sizeof(double)*Np,cudaMemcpyDeviceToDevice);
+  }
   if(TVisco==VISCO_LaminarSPS)cudaMemset(SpsTaug,0,sizeof(tsymatrix3f)*Np);
   if(CaseNfloat)InitFloating();
   if(MotionVelg)cudaMemset(MotionVelg,0,sizeof(float3)*Np); //<vs_mddbc>
@@ -854,6 +896,8 @@ void JSphGpu::PreInteractionVars_Forces(unsigned np,unsigned npb){
   const unsigned npf=np-npb;
   cudaMemset(ViscDtg,0,sizeof(float)*np);                                //ViscDtg[]=0
   cudaMemset(Arg,0,sizeof(float)*np);                                    //Arg[]=0
+  //Temperature Prashant
+  //cudaMemset(Atempg, 0, sizeof(float)*np);
   if(Deltag)cudaMemset(Deltag,0,sizeof(float)*np);                       //Deltag[]=0
   cudaMemset(Aceg,0,sizeof(tfloat3)*np);                                 //Aceg[]=(0,0,0)
   if(SpsGradvelg)cudaMemset(SpsGradvelg+npb,0,sizeof(tsymatrix3f)*npf);  //SpsGradvelg[]=(0,0,0,0,0,0).
@@ -874,6 +918,8 @@ void JSphGpu::PreInteraction_Forces(){
   //-Assign memory.
   ViscDtg=ArraysGpu->ReserveFloat();
   Arg=ArraysGpu->ReserveFloat();
+  //Temperature Prashant
+  //Atempg=ArraysGpu->ReserveFloat();
   Aceg=ArraysGpu->ReserveFloat3();
   if(DDTArray)Deltag=ArraysGpu->ReserveFloat();
   if(Shifting)ShiftPosfsg=ArraysGpu->ReserveFloat4();

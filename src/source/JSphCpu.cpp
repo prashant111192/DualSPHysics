@@ -845,9 +845,9 @@ template<TpKernel tker,TpFtMode ftmode,TpVisco tvisco,TpDensity tdensity,bool sh
               if(dot<0){
                   //Viscosity and temperature Prashant VISCOTEMP
                float tempvisco = visco;
-               /*if(*temp<274.0){
+               if(*temp<274.0){
                    tempvisco=tempvisco*3;
-               }*/
+               }
                 const float amubar=KernelH*dot_rr2;  //amubar=CTE.h*dot/(rr2+CTE.eta2);
                 const float robar=(rhopp1+velrhop2.w)*0.5f;
                 //const float pi_visc=(-visco*cbar*amubar/robar)*massp2;

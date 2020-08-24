@@ -120,12 +120,14 @@ protected:
   tdouble2 *Posxy;
   double *Posz;
   tfloat4 *Velrhop;
+  //double *Temp; //Temperature Prashant
 
   //-Auxiliary variables for the conversion (size=ParticlesSize).
   //-Variables auxiliares para conversion (size=ParticlesSize).
   tdouble3 *AuxPos;
   tfloat3 *AuxVel; 
   float *AuxRhop;
+  //double *AuxTemp; //Temperature Prashant
 
   unsigned GpuParticlesAllocs;///<Number of allocations.
   unsigned GpuParticlesSize;  ///<Number of particles for which GPU memory was allocated. | Numero de particulas para las cuales se reservo memoria en gpu.
@@ -147,17 +149,20 @@ protected:
   double *Poszg;
   float4 *PosCellg; ///<Relative position and cell coordiantes for particle interaction {posx,posy,posz,cellxyz}
   float4 *Velrhopg;
+  //double *Tempg; //Temperature Prashant
 
   float3 *BoundNormalg;  ///<Normal (x,y,z) pointing from boundary particles to ghost nodes.  //<vs_mddbc>
   float3 *MotionVelg;    ///<Velocity of a moving boundary particle.                          //<vs_mddbc>
     
   //-Variables for compute step: VERLET.
   float4 *VelrhopM1g;  ///<Verlet: in order to keep previous values. | Verlet: para guardar valores anteriores.
+  //double *TempM1g;	//Temperature Prashant
 
   //-Variables for compute step: SYMPLECTIC.
   double2 *PosxyPreg;  ///<Sympletic: in order to keep previous values. | Sympletic: para guardar valores en predictor.
   double *PoszPreg;
   float4 *VelrhopPreg;
+  //double *TempPreg;		//Temperature Prashant
 
   //-Variables for floating bodies.
   unsigned *FtRidpg;      ///<Identifier to access to the particles of the floating object [CaseNfloat].
@@ -191,6 +196,7 @@ protected:
   float *ViscDtg;
   float3 *Aceg;      ///<Accumulates acceleration of the particles. | Acumula fuerzas de interaccion.
   float *Arg; 
+  //float *Atempg; //Temperature Prashant
   float *Deltag;     ///<Accumulates adjustment of Delta-SPH with DELTA_DynamicExt. | Acumula ajuste de Delta-SPH con DELTA_DynamicExt.
 
   float4 *ShiftPosfsg;  ///<Particle displacement and free surface detection for Shifting.
