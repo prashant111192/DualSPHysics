@@ -471,18 +471,29 @@ template<TpKernel tker,TpFtMode ftmode,bool symm>
   __global__ void KerInteractionForcesBound(unsigned n,unsigned pinit
   ,int scelldiv,int4 nc,int3 cellzero,const int2 *beginendcellfluid,const unsigned *dcell
   ,const float *ftomassp
-  ,const float4 *poscell,const float4 *velrhop,const typecode *code,const unsigned *idp
-  ,float *viscdt,float *ar)
+  ,const float4 *poscell,const float4 *velrhop
+  //Temperature Prashant
+  //,const double *temp
+  const typecode *code,const unsigned *idp
+  ,float *viscdt,float *ar
+  //Temperature Prashant
+  //,float *atemp
+  )
 {
   const unsigned p=blockIdx.x*blockDim.x + threadIdx.x; //-Number of thread.
   if(p<n){
     const unsigned p1=p+pinit;      //-Number of particle.
     float visc=0,arp1=0;
+    //Temperature Prashant
+    //float atempp1=0;
 
     //-Loads particle p1 data.
     const float4 pscellp1=poscell[p1];
     const float4 velrhop1=velrhop[p1];
     const bool rsymp1=(symm && CEL_GetPartY(__float_as_uint(pscellp1.w))==0); //<vs_syymmetry>
+    //Temperature Prashant
+    //double tempp1 = temp[p1];
+
     
     //-Obtains neighborhood search limits.
     int ini1,fin1,ini2,fin2,ini3,fin3;
@@ -494,11 +505,16 @@ template<TpKernel tker,TpFtMode ftmode,bool symm>
       if(pfin){
                           KerInteractionForcesBoundBox<tker,ftmode,false> (p1,pini,pfin,ftomassp,poscell,velrhop,code,idp,CTE.massf,pscellp1,velrhop1,arp1,visc);
         if(symm && rsymp1)KerInteractionForcesBoundBox<tker,ftmode,true > (p1,pini,pfin,ftomassp,poscell,velrhop,code,idp,CTE.massf,pscellp1,velrhop1,arp1,visc);
+        //Temperature Prashant
+                          //KerInteractionForcesBoundBox<tker,ftmode,false> (p1,pini,pfin,ftomassp,poscell,velrhop,temp,code,idp,CTE.massf,pscellp1,velrhop1,tempp1,arp1,atempp1,visc);
+        //if(symm && rsymp1)KerInteractionForcesBoundBox<tker,ftmode,true > (p1,pini,pfin,ftomassp,poscell,velrhop,temp,code,idp,CTE.massf,pscellp1,velrhop1,tempp1,arp1,atempp1,visc);
       }
     }
     //-Stores results.
     if(arp1 || visc){
       ar[p1]+=arp1;
+      //Temperature Prashant
+      //atemp[p1] += atempp1;
       if(visc>viscdt[p1])viscdt[p1]=visc;
     }
   }
@@ -512,12 +528,20 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
   __device__ void KerInteractionForcesFluidBox(bool boundp2,unsigned p1
   ,const unsigned &pini,const unsigned &pfin,float visco
   ,const float *ftomassp,const float2 *tauff
-  ,const float4 *poscell,const float4 *velrhop,const typecode *code,const unsigned *idp
+  ,const float4 *poscell,const float4 *velrhop
+  //Temperature Prashant
+  //,const double *temp
+  ,const typecode *code,const unsigned *idp
   ,float massp2,bool ftp1
   ,const float4 &pscellp1,const float4 &velrhop1,float pressp1
+  //Temperature Prashant
+  //,double tempp1
   ,const float2 &taup1_xx_xy,const float2 &taup1_xz_yy,const float2 &taup1_yz_zz
   ,float2 &grap1_xx_xy,float2 &grap1_xz_yy,float2 &grap1_yz_zz
-  ,float3 &acep1,float &arp1,float &visc,float &deltap1
+  ,float3 &acep1,float &arp1
+  //Temperature Prashant
+  //,float &atemp1
+  ,float &visc,float &deltap1
   ,TpShifting shiftmode,float4 &shiftposfsp1)
 {
   for(int p2=pini;p2<pfin;p2++){
@@ -595,6 +619,16 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
         shiftposfsp1.w-=massrhop*dot3;
       }
 
+      //Teperature Prashant Compute Temperature Derivative
+      /*
+      if (compute){
+          float heatKp2 = (bound2 ? CTE.HeatKBound : CTE.HeatKBound);
+          float rhopp2 = (bound2 ? CTE.DensityBound : CTE.velrhop2.w);
+          const double dtemp = tempp1 - temp[p2]; //(dtemp= tempp1-tempp2)
+          const float tempConst = (4 * massp2 * CTE.HeatKFluid * heatKp2) / (CTE.HeatCpFluid * rhopp1 * rhop2 * (CTE.HeatKFluid + heatKp2));
+          atempp1 += float(tempConst * dtemp *fac);
+      }
+      */
       //===== Viscosity ===== 
       if(compute){
         const float dot=drx*dvx + dry*dvy + drz*dvz;
@@ -665,6 +699,8 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
   if(p<n){
     const unsigned p1=p+pinit;      //-Number of particle.
     float visc=0,arp1=0,deltap1=0;
+    //Temperature Prashant
+    //float atempp1=0;
     float3 acep1=make_float3(0,0,0);
 
     //-Variables for Shifting.
@@ -685,6 +721,8 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
     const float4 velrhop1=velrhop[p1];
     const float pressp1=cufsph::ComputePressCte(velrhop1.w);
     const bool rsymp1=(symm && CEL_GetPartY(__float_as_uint(pscellp1.w))==0); //<vs_syymmetry>
+    //Temperature Prashant
+    //double tempp1=temp[p1];
 
     //-Variables for Laminar+SPS.
     float2 taup1_xx_xy,taup1_xz_yy,taup1_yz_zz;
@@ -712,6 +750,9 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
       if(pfin){
                           KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,false> (false,p1,pini,pfin,viscof,ftomassp,tauff,poscell,velrhop,code,idp,CTE.massf,ftp1,pscellp1,velrhop1,pressp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,visc,deltap1,shiftmode,shiftposfsp1);
         if(symm && rsymp1)KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,true > (false,p1,pini,pfin,viscof,ftomassp,tauff,poscell,velrhop,code,idp,CTE.massf,ftp1,pscellp1,velrhop1,pressp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,visc,deltap1,shiftmode,shiftposfsp1); //<vs_syymmetry>
+        //Temperature Prashant
+                          //KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,false> (false,p1,pini,pfin,viscof,ftomassp,tauff,poscell,velrhop,temp,code,idp,CTE.massf,ftp1,pscellp1,velrhop1,pressp1,tempp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,atempp1,atempp1,visc,deltap1,shiftmode,shiftposfsp1);
+        //if(symm && rsymp1)KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,true > (false,p1,pini,pfin,viscof,ftomassp,tauff,poscell,velrhop,code,idp,CTE.massf,ftp1,pscellp1,velrhop1,pressp1,tempp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,atempp1,visc,deltap1,shiftmode,shiftposfsp1); //<vs_syymmetry>
       }
     }
     //-Interaction with boundaries.
@@ -721,6 +762,9 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
       if(pfin){
                         KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,false> (true ,p1,pini,pfin,viscob,ftomassp,tauff,poscell,velrhop,code,idp,CTE.massb,ftp1,pscellp1,velrhop1,pressp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,visc,deltap1,shiftmode,shiftposfsp1);
       if(symm && rsymp1)KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,true > (true ,p1,pini,pfin,viscob,ftomassp,tauff,poscell,velrhop,code,idp,CTE.massb,ftp1,pscellp1,velrhop1,pressp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,visc,deltap1,shiftmode,shiftposfsp1);
+      //Temperature Prashant
+                      //KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,false> (true ,p1,pini,pfin,viscob,ftomassp,tauff,poscell,velrhop,temp,code,idp,CTE.massb,ftp1,pscellp1,velrhop1,pressp1,tempp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,atempp1,visc,deltap1,shiftmode,shiftposfsp1);
+    //if(symm && rsymp1)KerInteractionForcesFluidBox<tker,ftmode,lamsps,tdensity,shift,true > (true ,p1,pini,pfin,viscob,ftomassp,tauff,poscell,velrhop,temp,code,idp,CTE.massb,ftp1,pscellp1,velrhop1,pressp1,tempp1,taup1_xx_xy,taup1_xz_yy,taup1_yz_zz,grap1_xx_xy,grap1_xz_yy,grap1_yz_zz,acep1,arp1,atempp1,visc,deltap1,shiftmode,shiftposfsp1);
       }
     }
 
@@ -734,6 +778,8 @@ template<TpKernel tker,TpFtMode ftmode,bool lamsps,TpDensity tdensity,bool shift
         else if(deltap1!=FLT_MAX)arp1+=deltap1;
       }
       ar[p1]+=arp1;
+      //Temperature Prashant
+      //atemp[p1] += atempp1;
       float3 r=ace[p1]; r.x+=acep1.x; r.y+=acep1.y; r.z+=acep1.z; ace[p1]=r;
       if(visc>viscdt[p1])viscdt[p1]=visc;
       if(lamsps){
